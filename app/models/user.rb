@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :events
 
   validates :username, presence: true, uniqueness: true
-  validates :phone_number, uniqueness: true
 end

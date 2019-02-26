@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :participations, dependent: :destoy
+  has_many :participations, dependent: :destroy
 
-  validates :start_date, presence: true
+  validates :start_at, presence: true
   validates :name, presence: true
   validates :kind, presence: true
 end
