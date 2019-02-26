@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :events, only: [:show, :new, :create, :edit, :update]
+
+  resources :participations, only: [:index] do
+    resources :accepteds, only: :create
+    resources :declineds, only: :create
+    resources :votes, only: :create
+  end
+
 end
