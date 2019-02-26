@@ -1,5 +1,5 @@
 .wrapper{
-  background: #269F00;
+  //background: #269F00;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -13,8 +13,22 @@
 .home-buttons {
   background-color: red;
   height: 40%;
+  display: flex;
+  align-items: base-line;
+
 }
 .btnhome {
   width: 100vw;
+  margin-top: 50px;
 }
 
+h2 {
+  margin-top: 15px;
+  padding-left: 150px;
+  justify-content: center;
+}
+
+p{
+  padding-left: 15px;
+  justify-content: center;
+}
