@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :new, :create, :edit, :update]
 
   resources :participations, only: [:index] do
-    resources :accepteds, only: :create
-    resources :declineds, only: :create
+    scope module: :participations do
+      resources :accepteds, only: :create
+      resources :declineds, only: :create
+    end
     resources :votes, only: :create
   end
 
 end
+
