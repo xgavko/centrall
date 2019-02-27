@@ -1,32 +1,33 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: #269f00;
   transition: all 0.3s ease;
   height: 60px;
   display: flex;
   vertical-align: center;
-  justify-content: flex-start;
 }
 
 .burger{
+min-height: 44px;
+min-width: 44px;
 margin-top: auto;
 margin-bottom: auto;
 }
 
 .navbar-center-logo {
   position: absolute;
-  self-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
   left: 50%;
   margin-left: -3em;
 }
 
 /* Logo */
 .navbar-logo {
-  display: block;
-  margin: 0 auto;
+  margin-top: 0.8em;
   width: 5em;
-  height: 5em;
+  height: 2.5em;
 }
 
 
