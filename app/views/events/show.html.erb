@@ -1,3 +1,9 @@
+<%= @event.name %>
+<% @event.status = "voting" %>
+<%= @event.status %>
+
+
+
 <% if @event.boarding? %>
   <%= render 'boarding', event: @event %>
 <% elsif @event.voting? %>
