@@ -1,6 +1,6 @@
 <h1>Boarding</h1>
 
-<div class="wrapper">
+<div class="wrapper-lath">
   <% event.participations.each do |participation| %>
     <div class="lath">
       <div class="avatar">
@@ -22,35 +22,38 @@
       </div>
     </div>
   <% end %>
-</div>
 
-<% participation = Participation.where(user: current_user, event: event).first %>
-<div class="fixed-bottom">
-  <div class="wrapper">
-    <div class="lath">
 
-      <%= link_to participation_declineds_path(participation), method: :post, class: 'lath-button decline' do %>
-        <div class="icon">
-          <%= inline_svg('times.svg') %>
-        </div>
-      <% end %>
+  <% participation = Participation.where(user: current_user, event: event).first %>
+  <div class="lath">
 
-      <div class="lath-content">
-        <% if participation.pending? %>
-          <h2 class='text-center'>Wanna Join?</h2>
-        <% else %>
-          <h2 class='text-center'>Changed Your Mind?</h2>
-          <% end %>
+    <%= link_to participation_declineds_path(participation), method: :post, class: 'lath-button decline' do %>
+      <div class="icon">
+        <%= inline_svg('times.svg') %>
       </div>
+    <% end %>
 
-      <%= link_to participation_accepteds_path(participation), method: :post, class: 'lath-button accept' do %>
+    <div class="lath-content">
+      <% if participation.pending? %>
+        <h2 class='text-center'>Wanna Join?</h2>
+      <% else %>
+        <h2 class='text-center'>Changed Your Mind?</h2>
+        <% end %>
+    </div>
+
+    <%#= link_to participation_accepteds_path(participation), method: :post, class: 'lath-button accept' do %>
+      <div class="lath-button accept">
         <div class="icon">
           <%= inline_svg('tick.svg') %>
         </div>
-      <% end %>
+      </div>
+    <%# end %>
 
-    </div>
+  </div>
+
+  <div class='text-center'>
+    <h2>Set your location</h2>
+
+    <%= render 'address_form', participation: participation %>
   </div>
 </div>
-
-
