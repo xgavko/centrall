@@ -1,3 +1,3 @@
 import "popper.js";
 import "bootstrap";
-import "components/flyoutnavbar";
+import "components/flyoutnavbar.js";

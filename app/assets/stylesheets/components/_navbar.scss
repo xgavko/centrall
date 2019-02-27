@@ -4,13 +4,21 @@
   background: white;
   transition: all 0.3s ease;
   height: 60px;
-  padding: 0px 30px;
   display: flex;
-  align-items: center;
+  vertical-align: center;
+  justify-content: flex-start;
+}
+
+.burger{
+margin-top: auto;
+margin-bottom: auto;
 }
 
 .navbar-center-logo {
-  margin: auto;
+  position: absolute;
+  self-align: center;
+  left: 50%;
+  margin-left: -3em;
 }
 
 /* Logo */
@@ -21,24 +29,6 @@
   height: 5em;
 }
 
-
-.navbar-wagon-brand img {
-  height: 50px;
-}
-
-/* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
-
-/* Right section */
-.navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 /* Basic navbar item */
 .navbar-wagon-item {
