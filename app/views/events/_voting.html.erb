@@ -36,11 +36,11 @@
 
 </div>
 
-
-
-
-
-
+<% votes = [] %>
+<% votes1 = @event.participations.where(place: @event.places[0]) %>
+<% votes2 = @event.participations.where(place: @event.places[1]) %>
+<% votes3 = @event.participations.where(place: @event.places[2]) %>
+<% votes1.length %>
 
 
 
