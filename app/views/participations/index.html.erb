@@ -7,15 +7,34 @@
 <%rankby ="&rankby=distance"%>
 <%type = "&type=restaurant"%>
 <%key = "&key=#{ENV['GOOGLE_PLACES_API_KEY']}"%>
+<%fields = "&fields=formatted_address,icon,formatted_phone_number,website,reviews" %>
 <%parameters = "#{location}#{rankby}#{type}#{key}"%>
 <% url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?#{parameters}"%>
 <%places_serialized = open(url).read%>
 <%places_parsed = JSON.parse(places_serialized) %>
   <% places = places_parsed["results"].first(3) %>
   <% places.each do |place| %>
-   <p> <%= place["id"] %></p>
-   <p> <%= place["name"] %></p>
-   <p> rating: <%= place["rating"]  %>⭐️</p>
-   <p> total ratings: <%= place["user_ratings_total"] %></p>
+    <p> <%place_id = "placeid=#{place["place_id"]}" %></p>
+    <p> <%= place["name"] %></p>
+    <p> rating: <%= place["rating"]  %>⭐️</p>
+    <p> total ratings: <%= place["user_ratings_total"] %></p>
+    <% parameters2 = "#{place_id}#{fields}#{key}"%>
+    <% url_detail = "https://maps.googleapis.com/maps/api/place/details/json?#{parameters2}"%>
+    <% details_serialized = open(url_detail).read %>
+    <% details_parsed = JSON.parse(details_serialized) %>
+    <p><%= details_parsed["result"]["formatted_address"] %>
+    <%= details_parsed["result"]["formatted_phone_number"] %>
+    <%= details_parsed["result"]["website"] %></p>
+    <%= details_parsed["result"]["long_name"] %></p>
+    <% reviews = details_parsed["result"]["reviews"] %></p>
+    <% reviews.each do |review|%>
+      <%= review["relative_time_description"] %>
+      <%= review["text"] %>
+      <%= review["rating"] %>
+    <% end %>
+    <img src=
+    <%=details_parsed["result"]["icon"]%> alt="">
+
   <% end %>
+
 
