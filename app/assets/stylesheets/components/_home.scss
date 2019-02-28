@@ -1,12 +1,22 @@
-.wrapper{
+.wrapper {
   //background: #269F00;
   width: 100vw;
   display: flex;
   align-items: center;
   height: 60vh;
   justify-content: center;
+  background-color:#269F00;
+  opacity: 0,2px;
+  border-radius: 2px;
 }
-.logohome{
+.logo-white {
+  display: block;
+  margin: 0 auto;
+  fill: #3498db;
+  width: 15em;
+  height: 7em;
+}
+.logohome {
   width: 100vw;
   margin: auto;
 }
@@ -17,7 +27,7 @@
   align-items: base-line;
 
 }
-.btnhome {
+.btn-primary {
   width: 100vw;
   margin-top: 50px;
 }

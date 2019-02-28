@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= @event.status = 'voting' %>
 <%= @event.name %>
 <%= @event.status %>
@@ -9,3 +10,6 @@
 <% elsif @event.display_result? %>
   <%= render 'display_result', event: @event %>
 <% end %>
+=======
+<%= render @event.status, event: @event %>
+>>>>>>> b58f80866e5f99ca7746580d33fd19a2d7c18ffa
