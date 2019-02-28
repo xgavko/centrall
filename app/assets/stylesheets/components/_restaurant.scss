@@ -1,4 +1,20 @@
-.lath-content {
+.restaurant-wrapper {
+  width: 95vw;
+  margin: auto;
+}
+
+.restaurant-slate {
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 5px 10px lightgrey;
+  margin: 10px;
+  height: 65px;
+  color: white;
+}
+
+.restaurant-info {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
   width: 60%;
   padding: 5px 10px;
   display: flex;
@@ -18,19 +34,20 @@
   }
 }
 
-.lath-rating {
+.restaurant-rating {
   display: flex;
   align-items: center;
-  color: #269F00;
+  justify-content: flex-end;
+  padding-right: 10px;
+  width: 30%;
+  p {
+    margin: 0 5px;
+  }
 }
 
-.rating-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.lath-button {
-  width: 20%;
+.vote-button {
+  width: 65px;
+  flex-shrink: 0;
   .btn {
     border-radius: 0 5px 5px 0;
     display: flex;
@@ -42,7 +59,6 @@
     font-family: Muli;
     color: #269F00;
     border: none;
-    border-left: 2px solid rgba(38, 159, 0, 0.7);
   }
 
   .btn:hover {

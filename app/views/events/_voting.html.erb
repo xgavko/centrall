@@ -1,59 +1,47 @@
 <h1>Voting</h1>
 
-<% participations = Participation.where(id: event.participation_ids) %>
-<% participations.each do |participation| %>
-  <%= participation.user.username %>
-<% end %>
+<% results = [
+    {id: 1, name: "Buffonni", rating: "3.9", style: "Italian", photo_url: "https://png.pngtree.com/thumb_back/fw800/back_pic/04/59/29/02586a68e4829cc.jpg"},
+    {id: 2, name: "Sweet Bastard", rating: "4.5", style: "Burgers", photo_url: "https://www.vival.fr/images/recette/recette-99.jpg"},
+    {id: 3, name: "Chez Connard", rating: "4.1", style: "Brasserie", photo_url: "https://media-cdn.tripadvisor.com/media/photo-s/0f/94/14/17/brasserie-desbrosses.jpg"}
+  ] %>
 
-<div class="wrapper-lath">
-  <div class="lath">
-    <div class="lath-content">
-      <h2>Buffonni</h2>
-      <p>Italian</p>
-    </div>
-    <div class="lath-rating">
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-    </div>
-    <div class="lath-button">
-      <div class="btn btn-primary">
-        <%= link_to participation_votes_path(participation), method: :post, class: 'lath-button vote' do %>
-          <div class="icon">
-        <%= inline_svg('times.svg') %>
+<% participation = Participation.where(event: @event, user: current_user).first %>
+
+<div class="restaurant-wrapper">
+
+  <% results.each do |result| %>
+    <div class="restaurant-slate" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= result[:photo_url] %>); background-size: cover;">
+      <div class="restaurant-info">
+        <h2><%= result[:name] %></h2>
+        <p><%= result[:style] %></p>
+
+        <%= participation.chosen_place %>
       </div>
-    <% end %>
+      <div class="restaurant-rating">
+        <p><%= result[:rating] %></p>
+        <i class="fas fa-star"></i>
       </div>
-    </div>
-  </div>
 
-  <div class="lath">
-    <div class="lath-content">
-      <h2>MC Jerkinson</h2>
-      <p>English</p>
-    </div>
-    <div class="lath-rating">
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-    </div>
-    <div class="lath-button">
-      <div class="btn btn-primary">VOTE</div>
-    </div>
-  </div>
+      <%= link_to participation_votes_path(participation), method: :post, class: 'vote-button' do %>
+        <% participation.chosen_place = result[:id] %>
+        <div class="btn btn-primary">
+          <h3>+</h3>
+        </div>
+      <% end %>
 
-  <div class="lath">
-    <div class="lath-content">
-      <h2>Chez Connard</h2>
-      <p>Brasserie</p>
     </div>
-    <div class="lath-rating">
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-      <%= inline_svg'star.svg', class: "rating-icon" %>
-    </div>
-    <div class="lath-button">
-      <div class="btn btn-primary">VOTE</div>
-    </div>
-  </div>
+  <% end %>
+
+
 
 </div>
+
+
+
+
+
+
+
+
+

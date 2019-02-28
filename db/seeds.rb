@@ -18,7 +18,6 @@ Participation.create!(user: u1, event: e1)
 Participation.create!(user: u3, event: e1)
 Participation.create!(user: u2, event: e1)
 
-
 Participation.create!(user: u2, event: e2)
 
 puts 'End'
