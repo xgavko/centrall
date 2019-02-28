@@ -14,13 +14,24 @@
 h1{
   font-size: 22px;
   padding-top: 15px;
-  padding-bottom: 10px;
-  padding-left: 5px;
+  padding-left: 15px;
 }
 h4,h5{
   font-size: 17px;
 }
+h4{
+  padding: 15px 0;
+}
+h6 {
+  font-size: 12px;
+  color: #A1A1A1;
+  padding-left: 15px;
+  font-weight: lighter;
+}
 
 body {
   font-size: 12px;
+}
+button{
+  height: 44px;
 }
