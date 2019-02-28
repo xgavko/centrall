@@ -6,7 +6,7 @@
     {id: 3, name: "Chez Connard", rating: "4.1", style: "Brasserie", photo_url: "https://media-cdn.tripadvisor.com/media/photo-s/0f/94/14/17/brasserie-desbrosses.jpg"}
   ] %>
 
-<% participation = Participation.where(event: @event, user: current_user).first %>
+<% current_user_participation = Participation.where(event: @event, user: current_user).first %>
 
 <div class="restaurant-wrapper">
 
@@ -16,7 +16,7 @@
         <h2><%= result[:name] %></h2>
         <p><%= result[:style] %></p>
 
-        <%= participation.chosen_place %>
+        <%= current_user_participation.chosen_place %>
       </div>
       <div class="restaurant-rating">
         <p><%= result[:rating] %></p>
@@ -24,7 +24,6 @@
       </div>
 
       <%= link_to participation_votes_path(participation), method: :post, class: 'vote-button' do %>
-        <% participation.chosen_place = result[:id] %>
         <div class="btn btn-primary">
           <h3>+</h3>
         </div>
@@ -33,6 +32,7 @@
     </div>
   <% end %>
 
+  <%= current_user_participation.chosen_place %>
 
 
 </div>
