@@ -34,7 +34,7 @@
     </div>
 
   <div class=''>
-    <h4 class='text-center'>Where will you be?</h4>
+    <h4 class='text-center'>Where will you be leaving from?</h4>
     <%= simple_form_for current_user.participation(event), url: participation_accepteds_path(current_user.participation(event)), method: :post do |f| %>
       <div class="input-group flex-nowrap">
         <%= f.input_field :address, error: 'Not a valid address' %>
