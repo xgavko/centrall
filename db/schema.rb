@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_160121) do
+ActiveRecord::Schema.define(version: 2019_02_28_141209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,13 +32,26 @@ ActiveRecord::Schema.define(version: 2019_02_27_160121) do
     t.bigint "event_id"
     t.integer "status", default: 0
     t.string "address"
-    t.string "chosen_place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.bigint "place_id"
     t.index ["event_id"], name: "index_participations_on_event_id"
+    t.index ["place_id"], name: "index_participations_on_place_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "google_id"
+    t.string "name"
+    t.string "rating", default: "0"
+    t.string "address"
+    t.string "photo"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_places_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,5 +70,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_160121) do
 
   add_foreign_key "events", "users"
   add_foreign_key "participations", "events"
+  add_foreign_key "participations", "places"
   add_foreign_key "participations", "users"
+  add_foreign_key "places", "events"
 end

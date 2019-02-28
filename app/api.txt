@@ -1,0 +1,22 @@
+
+
+
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?parameters
+
+
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&key=YOUR_API_KEY
+
+
+parameters = location + rankby + type + key
+location = 'location=#{latitude},#{longitude}'
+rankby '&rankby=distance'
+type '&type=#{kind}''
+key '&key: YOUR_API_KEY'
+
+radius = '&radius=1000' (doit être à la place de rankby)
+
+Exemple de recherche: restaurants près de 107 cours Balguerie Stuttenberg, rayon de 1500 m
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.8592,-0.5656999999999925&radius=1500&type=restaurant&key=AIzaSyA_rB5rTHBGin0Ew-0meSmK69OKVN_k0f0
+
+Exemple de recherche: restaurants près de 107 cours Balguerie Stuttenberg, rank by distance
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.8592,-0.5656999999999925&rankby=distance&type=restaurant&key=AIzaSyA_rB5rTHBGin0Ew-0meSmK69OKVN_k0f0
