@@ -6,7 +6,8 @@
   height: 60vh;
   justify-content: center;
   background-color:#269F00;
-  background:linear-gradient(0.25turn, #269F00 0%, #ffffff 50%);
+  opacity: 0,2px;
+  border-radius: 2px;
 }
 .logo-white {
   display: block;
@@ -26,7 +27,7 @@
   align-items: base-line;
 
 }
-.btnhome {
+.btn-primary {
   width: 100vw;
   margin-top: 50px;
 }
