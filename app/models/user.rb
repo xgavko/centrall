@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :events
 
   validates :username, presence: true, uniqueness: true
+
+  def participation(event)
+    participations.find_by(event: event)
+  end
 end

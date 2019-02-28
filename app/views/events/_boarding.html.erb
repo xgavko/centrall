@@ -20,11 +20,10 @@
     </div>
   <% end %>
 
-  <% participation = Participation.where(user: current_user, event: event).first %>
   <h4 class='text-center'>Are you joining?</h4>
   <div class="row">
     <div class="col-4">
-      <%= link_to participation_declineds_path(participation), method: :post do %>
+      <%= link_to participation_declineds_path(current_user.participation(event)), method: :post do %>
         <button href="#" class="btn btn-light btn-block"><%= inline_svg('times.svg') %></button>
       <% end %>
     </div>
@@ -35,7 +34,7 @@
 
   <div class=''>
     <h4 class='text-center'>Where will you be?</h4>
-    <%= simple_form_for participation, url: participation_accepteds_path(participation), method: :post do |f| %>
+    <%= simple_form_for current_user.participation(event), url: participation_accepteds_path(current_user.participation(event)), method: :post do |f| %>
       <div class="input-group flex-nowrap">
         <%= f.input_field :address, error: 'Not a valid address' %>
         <div class="input-group-append">
