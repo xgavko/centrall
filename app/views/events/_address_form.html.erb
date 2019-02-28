@@ -1,4 +1,3 @@
 <%= simple_form_for participation, url: participation_accepteds_path(participation), method: :post do |f| %>
   <%= f.input :address, error: 'Not a valid address' %>
-  <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>

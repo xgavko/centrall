@@ -21,25 +21,30 @@
   <% end %>
 
   <% participation = Participation.where(user: current_user, event: event).first %>
-  <div class="container">
-    <h4 class='text-center'>Are you joining?</h4>
-    <div class="row">
-      <div class="col-4">
-        <%= link_to participation_declineds_path(participation), method: :post do %>
-          <a href="#" class="btn btn-light btn-block"><%= inline_svg('times.svg') %></a>
-        <% end %>
-      </div>
-      <div class="col-8">
-        <%#= link_to participation_accepteds_path(participation), method: :post, class: 'lath-button accept' do %>
-          <a href="#" class="btn btn-primary btn-block"><%= inline_svg('tick.svg') %></a>
-        <%# end %>
-      </div>
+  <h4 class='text-center'>Are you joining?</h4>
+  <div class="row">
+    <div class="col-4">
+      <%= link_to participation_declineds_path(participation), method: :post do %>
+        <a href="#" class="btn btn-light btn-block"><%= inline_svg('times.svg') %></a>
+      <% end %>
     </div>
-  </div>
+    <div class="col-8">
+        <a href="#" class="btn btn-primary btn-block" id="launch-geoloc"><%= inline_svg('tick.svg') %></a>
+    </div>
+    </div>
 
-  <div class='text-center'>
-    <h4>Where will you be?</h4>
+  <div class=''>
+    <h4 class='text-center'>Where will you be?</h4>
+      <%= simple_form_for participation, url: participation_accepteds_path(participation), method: :post do |f| %>
+      <div class="input-group flex-nowrap">
+        <%= f.input_field :address, error: 'Not a valid address' %>
+        <div class="input-group-append">
+          <a href="#" class="btn btn-secondary" id="geoloc"><%= inline_svg('gps.svg') %></a>
+        </div>
+      </div>
+    <% end %>
 
-    <%= render 'address_form', participation: participation %>
-  </div>
+
+    <input type="submit" class="btn btn-primary btn-block">
+    </div>
 </div>
