@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.date :start_at
       t.integer :status, default: 0
-      t.string :kind
+      t.integer :kind
       t.string :selected_place
       t.string :name
 
