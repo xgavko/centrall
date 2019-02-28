@@ -10,8 +10,8 @@ u3 = User.create!(email: 'nicolas@centrall.com', username: 'nicolas', password: 
 u4 = User.create!(email: 'benoit@centrall.com', username: 'benoit', password: '123soleil')
 
 date = Date.tomorrow
-e1 = Event.create!(name: 'Meeting Onyrik', start_at: date, kind:'bar', user: u4)
-e2 = Event.create!(name: 'Meeting au resto', start_at: date, kind:'restaurant', user: u2)
+e1 = Event.create!(name: 'Meeting Onyrik', start_at: date, kind: 0, user: u4)
+e2 = Event.create!(name: 'Meeting au resto', start_at: date, kind: 1, user: u2)
 
 Participation.create!(user: u4, event: e1)
 Participation.create!(user: u1, event: e1)

@@ -6,7 +6,9 @@
 <p> Tous vos events que vous créer ou auxquels vous participez apparaîtront ici </p>
 
 <div class="container">
-  <a href="#" class="btn btn-primary btn-block">Create event</a>
+  <%= link_to new_event_path do %>
+  <button href="#" class="btn btn-primary btn-block">Create event</button>
+  <% end %>
 </div>
 
 
