@@ -1,1 +1,21 @@
 <%= render 'shared/navbar' %>
+
+<%require 'json' %>
+<%require 'open-uri' %>
+
+<%location = "location=44.8592,-0.5656999999999925"%>
+<%rankby ="&rankby=distance"%>
+<%type = "&type=restaurant"%>
+<%key = "&key=#{ENV['GOOGLE_PLACES_API_KEY']}"%>
+<%parameters = "#{location}#{rankby}#{type}#{key}"%>
+<% url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?#{parameters}"%>
+<%places_serialized = open(url).read%>
+<%places_parsed = JSON.parse(places_serialized) %>
+  <% places = places_parsed["results"].first(3) %>
+  <% places.each do |place| %>
+   <p> <%= place["id"] %></p>
+   <p> <%= place["name"] %></p>
+   <p> rating: <%= place["rating"]  %>⭐️</p>
+   <p> total ratings: <%= place["user_ratings_total"] %></p>
+  <% end %>
+
