@@ -18,6 +18,8 @@ Participation.create!(user: u1, event: e1)
 Participation.create!(user: u3, event: e1)
 Participation.create!(user: u2, event: e1)
 
-Participation.create!(user: u2, event: e2)
+Place.create!(event: e1, google_id: "a1234", name: "Buffoni", address: "12 Rue Fancul", rating: "3.9")
+Place.create!(event: e1, google_id: "b1234", name: "Sweet Bastard", address: "20 Allée Shit", rating: "4.5")
+Place.create!(event: e1, google_id: "c1234", name: "Chez Connard", address: "48 Impasse Naze", rating: "4.1")
 
 puts 'End'

@@ -1,6 +1,7 @@
 class Participation < ApplicationRecord
   belongs_to :user
   belongs_to :event
+  belongs_to :place, optional: true
 
   validates :user, uniqueness: { scope: :event }
 
