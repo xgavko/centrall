@@ -1,58 +1,94 @@
 <h1>Boarding</h1>
 
-<div class="wrapper-lath">
+<div class="container">
+  <h5>PARTICIPANTS</h5>
   <% event.participations.each do |participation| %>
+    <div class="participant">
+      <div class="">
+        <img src="https://api.adorable.io/avatars/285/nicolas" class="avatar mr-2">
+        <span><%= participation.user.username.capitalize %></span>
+      </div>
+      <div class='p-3'>
+        <% if participation.pending? %>
+          <%= inline_svg('question-mark.svg') %>
+        <% elsif participation.accepted? %>
+          <%= inline_svg('check.svg') %>
+        <% else %>
+          <%= inline_svg('times.svg') %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+<!-- <div class="wrapper-lath">
+  <%# event.participations.each do |participation| %>
     <div class="lath">
       <div class="avatar">
         <img src="https://api.adorable.io/avatars/285/nicolas" alt="avatar">
       </div>
       <div class="lath-content">
-        <h2><%= participation.user.username.capitalize %></h2>
+        <h2><%#= participation.user.username.capitalize %></h2>
       </div>
       <div class="lath-button-part">
         <div class="icon">
-          <% if participation.pending? %>
-            <%= inline_svg('question-mark.svg') %>
-          <% elsif participation.accepted? %>
-            <%= inline_svg('check.svg') %>
-          <% else %>
-            <%= inline_svg('times.svg') %>
-          <% end %>
+          <#% if participation.pending? %>
+            <%#= inline_svg('question-mark.svg') %>
+          <#% elsif participation.accepted? %>
+            <%#= inline_svg('check.svg') %>
+          <%# else %>
+            <%#= inline_svg('times.svg') %>
+          <%# end %>
         </div>
       </div>
     </div>
-  <% end %>
-
+  <%# end %>
+ -->
 
   <% participation = Participation.where(user: current_user, event: event).first %>
-  <div class="lath">
-
-    <%= link_to participation_declineds_path(participation), method: :post, class: 'lath-button decline' do %>
-      <div class="icon">
-        <%= inline_svg('times.svg') %>
+  <div class="container">
+    <h4 class='text-center'>Are you joining?</h4>
+    <div class="row">
+      <div class="col-4">
+        <%= link_to participation_declineds_path(participation), method: :post, class: 'lath-button decline' do %>
+          <a href="#" class="btn btn-light btn-block"><%= inline_svg('times.svg') %></a>
+        <% end %>
       </div>
-    <% end %>
+      <div class="col-8">
+        <%= link_to participation_accepteds_path(participation), method: :post, class: 'lath-button accept' do %>
+          <a href="#" class="btn btn-primary btn-block"><%= inline_svg('tick.svg') %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="lath">
+
+    <%#= link_to participation_declineds_path(participation), method: :post, class: 'lath-button decline' do %>
+      <div class="icon">
+        <%#= inline_svg('times.svg') %>
+      </div>
+    <%# end %>
 
     <div class="lath-content">
-      <% if participation.pending? %>
+      <%# if participation.pending? %>
         <h2 class='text-center'>Wanna Join?</h2>
-      <% else %>
+      <%# else %>
         <h2 class='text-center'>Changed Your Mind?</h2>
-        <% end %>
+        <%# end %>
     </div>
 
     <%#= link_to participation_accepteds_path(participation), method: :post, class: 'lath-button accept' do %>
       <div class="lath-button accept">
         <div class="icon">
-          <%= inline_svg('tick.svg') %>
+          <%#= inline_svg('tick.svg') %>
         </div>
       </div>
     <%# end %>
 
-  </div>
+  </div> -->
 
   <div class='text-center'>
-    <h2>Set your location</h2>
+    <h4>Where will you be?</h4>
 
     <%= render 'address_form', participation: participation %>
   </div>

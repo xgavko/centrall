@@ -1,7 +1,1 @@
-<% if @event.boarding? %>
-  <%= render 'boarding', event: @event %>
-<% elsif @event.voting? %>
-  <%= render 'voting', event: @event %>
-<% else %>
-  <%= render 'display_result', event: @event %>
-<% end %>
+<%= render @event.status, event: @event %>
