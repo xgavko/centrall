@@ -1,6 +1,6 @@
-<h1>Boarding</h1>
-
+<h6><%= @event.created_at.to_formatted_s(:long) %></h6>
 <div class="container">
+  <hr>
   <h5>PARTICIPANTS</h5>
   <% event.participations.each do |participation| %>
     <div class="participant">
@@ -20,6 +20,7 @@
     </div>
   <% end %>
 
+<div class="bottom-rectangle">
   <h4 class='text-center'>Are you joining?</h4>
   <div class="row">
     <div class="col-4">
@@ -28,20 +29,21 @@
       <% end %>
     </div>
     <div class="col-8">
-        <button href="#" class="btn btn-primary btn-block" id="launch-geoloc"><%= inline_svg('tick.svg') %></button>
+        <button href="#" class="btn btn-primary btn-block" id="launch-geoloc"><%= inline_svg('check.svg') %></button>
     </div>
     </div>
 
   <div class=''>
-    <h4 class='text-center'>Where will you be?</h4>
+    <h4 class='text-center'>Where will you be leaving from?</h4>
     <%= simple_form_for current_user.participation(event), url: participation_accepteds_path(current_user.participation(event)), method: :post do |f| %>
       <div class="input-group flex-nowrap">
         <%= f.input_field :address, error: 'Not a valid address' %>
         <div class="input-group-append">
-          <a href="#" class="btn btn-secondary" id="geoloc"><%= inline_svg('gps.svg') %></a>
+          <a href="#" class="btn btn-secondary" id="geoloc"><%= inline_svg('tick.svg') %></a>
         </div>
       </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'Submit', class: 'btn btn-primary btn-block geoloc-submit' %>
     <% end %>
   </div>
+</div>
 </div>
