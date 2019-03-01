@@ -1,11 +1,9 @@
-<h1>Voting</h1>
-
 <div class="restaurant-wrapper">
 
   <%= simple_form_for :vote, url: participation_votes_path(current_user.participation(event)), method: :post do |f| %>
 
     <%= f.collection_radio_buttons :place_id, @event.places, :id, :name do |input| %>
-      <label>
+      <label class="btn-block" >
         <%= input.radio_button %>
 
         <%# use input.object if you want to access the tag instance %>
@@ -35,12 +33,6 @@
   <% end %>
 
 </div>
-
-
-
-
-
-
 
 
 
