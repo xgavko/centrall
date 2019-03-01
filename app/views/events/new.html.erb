@@ -1,8 +1,10 @@
-<h1>Create your Event</h1>
+<div class="container">
+  <h2 class='form-title text-center'>Create your Event</h2>
 
-<%= simple_form_for @event do |f| %>
-  <%= f.input :name, label: 'Your Event should have a name', error: 'The name is mandatory' %>
-  <%= f.input :start_at, :minute_step => 15, label: 'Set the time of your Event', error: 'The date & time are mandatory' %>
-  <%= f.input :kind, collection: Event.kinds.keys, as: :radio_buttons %>
-  <%= f.button :submit, class: 'btn btn-primary btn-block' %>
-<% end %>
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :name, label: 'Your Event should have a name', error: 'The name is mandatory' %>
+    <%= f.input :start_at, :minute_step => 15, label: 'Set the time of your Event', error: 'The date & time are mandatory', class: 'datetime' %>
+    <%= f.input :kind, collection: Event.kinds.keys, as: :radio_buttons %>
+    <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>
