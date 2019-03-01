@@ -4,4 +4,8 @@ class Place < ApplicationRecord
 
   validates :google_id, presence: true, uniqueness: true
   validates :name, presence: true
+
+  def coordinates
+    { lng: longitude, lat: latitude }
+  end
 end
