@@ -13,6 +13,13 @@ class Event < ApplicationRecord
   enum status: { boarding: 0, voting: 1, display_result: 2 }
   enum kind: { bar: 0, restaurant: 1 }
 
+  def final_result
+    place1_votes = participations.where(place: places[0])
+    place2_votes = participations.where(place: places[1])
+    place3_votes = participations.where(place: places[2])
+    self.place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
+  end
+
   def barycenter
     latitudes = []
     longitudes = []
