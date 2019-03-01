@@ -29,6 +29,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def index
+    @restult = Result.where.not(latitude: nil, longitude: nil)
+
+    @markers = @results.map do |result|
+      {
+        lng: result.longitude,
+        lat: result.latitude
+      }
+    end
+  end
+
   private
 
   def event_params
