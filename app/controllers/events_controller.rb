@@ -18,7 +18,35 @@ class EventsController < ApplicationController
     end
   end
 
+  def new
+    @event = Event.new
+  end
+
+  def create
+    event = current_user.events.new(event_params)
+    if event.save
+      redirect_to event
+    else
+      render :new
+    end
+  end
+
+  def index
+    @restult = Result.where.not(latitude: nil, longitude: nil)
+
+    @markers = @results.map do |result|
+      {
+        lng: result.longitude,
+        lat: result.latitude
+      }
+    end
+  end
+
   private
+
+  def event_params
+    params.require(:event).permit(:name, :start_at, :kind)
+  end
 
   def set_event
     @event = Event.find(params[:id])

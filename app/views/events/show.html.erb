@@ -1,6 +1,7 @@
 
 <h1>
-  <%= @event.status %>
+  <%= @event.status.capitalize %>
+  <%= @event.name %>
 </h1>
 
 <%= render @event.status, event: @event %>

@@ -9,7 +9,9 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :kind, presence: true
 
+  geocoded_by :address
   enum status: { boarding: 0, voting: 1, display_result: 2 }
+  enum kind: { bar: 0, restaurant: 1 }
 
   def final_result
     place1_votes = participations.where(place: places[0])
