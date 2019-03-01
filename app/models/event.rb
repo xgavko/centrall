@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :participations, dependent: :destroy
   has_many :places
+  has_one :place
 
   validates :start_at, presence: true
   validates :name, presence: true
