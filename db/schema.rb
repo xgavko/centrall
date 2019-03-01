@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_03_01_113338) do
     t.datetime "start_at"
     t.integer "status", default: 0
     t.integer "kind"
-    t.string "selected_place"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
