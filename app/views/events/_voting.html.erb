@@ -4,7 +4,7 @@
 
     <%= f.collection_radio_buttons :place_id, @event.places, :id, :name do |input| %>
       <label class="btn-block" >
-        <%= input.radio_button, { display: "none"; } %>
+        <%= input.radio_button %>
 
         <%# use input.object if you want to access the tag instance %>
 

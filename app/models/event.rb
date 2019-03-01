@@ -15,7 +15,7 @@ class Event < ApplicationRecord
     place1_votes = participations.where(place: places[0])
     place2_votes = participations.where(place: places[1])
     place3_votes = participations.where(place: places[2])
-    self.selected_place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
+    self.place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
   end
 
   def barycenter
