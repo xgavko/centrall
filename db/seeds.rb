@@ -26,10 +26,10 @@ Participation.create!(user: u2, event: e1, place: connard)
 
 e3 = Event.create!(name: 'Afterwork', start_at: date, kind: 0, user: u2, place: english)
 
-italian = Place.create!(event: e1, google_id: "a1234", name: "Buffoni", address: "12 Rue Fancul", rating: "3.9")
-english = Place.create!(event: e1, google_id: "b1234", name: "Sweet Bastard", address: "2 Cours d'Alsace-et-Lorraine, 33000 Bordeaux
+italian = Place.create!(event: e3, google_id: "a1234", name: "Buffoni", address: "12 Rue Fancul", rating: "3.9")
+english = Place.create!(event: e3, google_id: "b1234", name: "Sweet Bastard", address: "2 Cours d'Alsace-et-Lorraine, 33000 Bordeaux
 ", rating: "4.5")
-french = Place.create!(event: e1, google_id: "c1234", name: "Chez Connard", address: "48 Impasse Naze", rating: "4.1")
+french = Place.create!(event: e3, google_id: "c1234", name: "Chez Connard", address: "48 Impasse Naze", rating: "4.1")
 
 Participation.create!(user: u1, event: e3, place: english)
 Participation.create!(user: u2, event: e3, place: english)
