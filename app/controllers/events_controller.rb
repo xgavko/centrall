@@ -13,6 +13,8 @@ class EventsController < ApplicationController
       Participation.create(user: current_user, event: @event)
     when "voting"
       @event.set_places unless @event.places.any?
+    when "display_result"
+      @event.final_result
     end
   end
 

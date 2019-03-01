@@ -1,12 +1,10 @@
-<h1>Voting</h1>
-
 <div class="restaurant-wrapper">
 
   <%= simple_form_for :vote, url: participation_votes_path(current_user.participation(event)), method: :post do |f| %>
 
     <%= f.collection_radio_buttons :place_id, @event.places, :id, :name do |input| %>
-      <label>
-        <%= input.radio_button %>
+      <label class="btn-block" >
+        <%= input.radio_button, { display: "none"; } %>
 
         <%# use input.object if you want to access the tag instance %>
 
@@ -35,12 +33,6 @@
   <% end %>
 
 </div>
-
-<% votes = [] %>
-<% votes1 = @event.participations.where(place: @event.places[0]) %>
-<% votes2 = @event.participations.where(place: @event.places[1]) %>
-<% votes3 = @event.participations.where(place: @event.places[2]) %>
-<% votes1.length %>
 
 
 
