@@ -15,6 +15,8 @@ class EventsController < ApplicationController
       @event.set_places unless @event.places.any?
     when "display_result"
       @event.final_result
+      @result = Geocoder.search(@event.place.address)
+      @marker = @result.first.coordinates
     end
   end
 
@@ -31,16 +33,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def index
-    @restult = Result.where.not(latitude: nil, longitude: nil)
-
-    @markers = @results.map do |result|
-      {
-        lng: result.longitude,
-        lat: result.latitude
-      }
-    end
-  end
 
   private
 
