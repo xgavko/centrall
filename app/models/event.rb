@@ -58,7 +58,9 @@ class Event < ApplicationRecord
       data = {
         google_id: place["place_id"],
         name: place["name"],
-        rating: place["rating"]
+        rating: place["rating"],
+        latitude: place.dig("geometry", "location", "lat"),
+        longitude: place.dig("geometry", "location", "lng")
       }
       create_place(data)
     end
