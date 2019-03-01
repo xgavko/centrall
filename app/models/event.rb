@@ -4,21 +4,25 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :participations, dependent: :destroy
   has_many :places
-  has_one :place
 
   validates :start_at, presence: true
   validates :name, presence: true
   validates :kind, presence: true
 
-  geocoded_by :address
   enum status: { boarding: 0, voting: 1, display_result: 2 }
   enum kind: { bar: 0, restaurant: 1 }
 
-  def final_result
+  def chosen_place
+    places.find_by(chosen: true)
+  end
+
+  def final_result!
     place1_votes = participations.where(place: places[0])
     place2_votes = participations.where(place: places[1])
     place3_votes = participations.where(place: places[2])
-    self.place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
+    chosen_place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
+    chosen_place.chosen = true
+    chosen_place.save
   end
 
   def barycenter

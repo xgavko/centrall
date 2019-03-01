@@ -14,9 +14,7 @@ class EventsController < ApplicationController
     when "voting"
       @event.set_places unless @event.places.any?
     when "display_result"
-      @event.final_result
-      @result = Geocoder.search(@event.place.address)
-      @marker = @result.first.coordinates
+      @event.final_result!
     end
   end
 
