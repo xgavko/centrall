@@ -2,10 +2,10 @@
    <%= inline_svg "logo-white.svg", class: "logo-white" %>
 </div>
 
-<h2> Hello !</h2>
-<p> Tous vos events que vous créer ou auxquels vous participez apparaîtront ici </p>
+<div class="container text-center">
+  <h2 class=''> Hello !</h2>
+  <p> Tous vos events que vous créer ou auxquels vous participez apparaîtront ici </p>
 
-<div class="container">
   <%= link_to new_event_path do %>
   <button href="#" class="btn btn-primary btn-block">Create event</button>
   <% end %>

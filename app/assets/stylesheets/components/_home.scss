@@ -1,11 +1,10 @@
 .wrapper {
-  //background: #269F00;
+  background: #269F00;
   width: 100vw;
   display: flex;
   align-items: center;
   height: 60vh;
   justify-content: center;
-  background-image: url('fronticons.svg');
   background-size: cover;
   border-radius: 2px;
 }
@@ -26,11 +25,9 @@
 
 h2 {
   margin-top: 15px;
-  padding-left: 150px;
   justify-content: center;
 }
 
-p{
-  padding-left: 15px;
+p {
   justify-content: center;
 }
