@@ -20,8 +20,10 @@
           <%= link_to participation_votes_path(current_user.participation(event)), method: :post, class: 'vote-button' do %>
           <% end %>
 
+          <script type="voting.js"></script>
+
         </div>
-      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= f.button :submit, class: 'btn btn-primary upvote disabled' %>
       <% end %>
     </label>
   <% end %>
