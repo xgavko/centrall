@@ -1,5 +1,7 @@
-<h1>
-  <%= @event.status.capitalize %> - <%= @event.name %>
-</h1>
+<% if @event.status == "voting" || @event.status == "boarding" %>
+  <h1>
+    <%= @event.status.capitalize %> - <%= @event.name %>
+  </h1>
+  <% end %>
 
 <%= render @event.status, event: @event %>
