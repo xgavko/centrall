@@ -8,10 +8,12 @@ import { initAutocomplete } from '../plugins/init_autocomplete.js';
 import { geolocButton } from '../components/geolocation.js';
 import '../components/flyoutnavbar.js';
 import '../components/boarding.js';
+import { initCountdown } from '../plugins/init_countdown'
 
 initMapbox();
 initAutocomplete();
 geolocButton();
+initCountdown();
 
 
 window.geolocButton = geolocButton;
