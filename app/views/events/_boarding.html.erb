@@ -18,7 +18,9 @@
       <% end %>
     </div>
     <div class="col-8">
+      <%= link_to event_status_path(@event), method: :put do %>
         <button href="#" class='btn btn-primary btn-block'>Skip Timer</button>
+      <% end %>
     </div>
   </div>
 </div>
