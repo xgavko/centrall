@@ -1,13 +1,12 @@
-<div class="navbar-wagon">
-  <div class="burger">
+<div class="navbar">
+  <div class="navbar-burger">
     <section class="flyout flyout-closed">
     <header class="flyout-header">
       <div class="d-flex justify-content-between">
         <a class="flyout-close icon-link" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M19 6.4L17.6 5L12 10.6L6.4 5L5 6.4L10.6 12L5 17.6L6.4 19L12 13.4L17.6 19L19 17.6L13.4 12L19 6.4Z" fill="black"></path>
-          </svg>
+          <%= inline_svg 'burger.svg', class: 'black-svg' %>
         </a>
+      </div>
     </header>
 
     <div class="flyout-links">
@@ -20,20 +19,17 @@
     <div class="flyout-shadow flyout-close"></div>
     </section>
 
-    <a href="#" class="flyout-open">
-      <svg width="36" height="36" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="white"/>
-      </svg>
+    <a class="flyout-open navbar-burger" href="#">
+      <%= inline_svg 'burger.svg', class: 'white-svg' %>
     </a>
   </div>
 
 
-  <div class="navbar-center-logo">
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <%= inline_svg "logo-white.svg", class: "navbar-logo" %>
+  <div class="navbar-logo">
+    <%= link_to root_path do %>
+      <%= inline_svg "logo.svg", class: "logo" %>
     <% end %>
   </div>
-
 </div>
 
 
