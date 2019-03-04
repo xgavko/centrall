@@ -1,0 +1,18 @@
+<% if @participation.errors.any? %>
+  var formWrapper = document.getElementById('participation-form');
+  formWrapper.innerHTML = '<%= j render 'participations/form', participation: @participation %>';
+  geolocButton();
+<% else %>
+  // Passer statut à "accepted"
+  var participationEl = document.getElementById('participation-<%= @participation.id %>');
+  var newParticipationEl = createElementFromHTML('<%= j render 'participations/participation', participation: @participation %>');
+  participationEl.parentNode.replaceChild(newParticipationEl, participationEl);
+
+  // Cacher boarding 2
+  var board2 = document.getElementById('boarding-2');
+  board2.classList.add('panel-hidden');
+
+  // Afficher boarding 3
+  var board3 = document.getElementById('boarding-3');
+  board3.classList.remove('panel-hidden');
+<% end %>
