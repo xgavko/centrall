@@ -1,28 +1,44 @@
-<h6><%= @event.created_at.to_formatted_s(:long) %></h6>
+<h6 class="boarding_time" data-start_at=<%=@event.created_at%>><%= @event.created_at.to_formatted_s(:long) %></h6>
 <div class="container-participant">
+
 <hr>
-  <h5>PARTICIPANTS</h5>
-  <% event.participations.each do |participation| %>
+<h5 class='title-separator'>PARTICIPANTS</h5>
+<div class="container-participant">
+  <% @event.participations.each do |participation| %>
     <%= render 'participations/participation', participation: participation %>
   <% end %>
 </div>
 
-<div class='panel-bottom <%= "panel-hidden" unless current_user.participation(event).accepted? %>' id='boarding-3'>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis doloribus earum exercitationem, labore blanditiis mollitia corporis possimus doloremque similique eaque tempora sapiente assumenda, sunt, at repellendus? Cupiditate totam dolores maxime.
+<div class='panel-bottom text-center <%= 'panel-hidden' unless current_user.participation(@event).accepted? %>' id='boarding-3'>
+  <h4>Your friends are boarding!</h4>
+  <p>Votes will start in</p>
+  <h1>TIMER</h1>
+  <div class="row">
+    <div class="col-4">
+      <%= link_to participation_declineds_path(current_user.participation(@event)), method: :post do %>
+        <button href="#" class='btn btn-light btn-block'>Cancel</button>
+      <% end %>
+    </div>
+    <div class="col-8">
+      <%= link_to event_status_path(@event), method: :put do %>
+        <button href="#" class='btn btn-primary btn-block'>Skip Timer</button>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div class='panel-bottom panel-hidden' id='boarding-2'>
   <h4 class='text-center'>Where will you be leaving from?</h4>
   <div id='participation-form'>
-    <%= render 'participations/form', participation: current_user.participation(event) %>
+    <%= render 'participations/form', participation: current_user.participation(@event) %>
   </div>
 </div>
 
-<div class='panel-bottom <%= "panel-hidden" unless current_user.participation(event).pending? %>' id='boarding-1'>
+<div class='panel-bottom <%= "panel-hidden" unless current_user.participation(@event).pending? || current_user.participation(@event).declined? %>' id='boarding-1'>
   <h4 class='text-center'>Are you joining?</h4>
   <div class="row">
     <div class="col-4">
-      <%= link_to participation_declineds_path(current_user.participation(event)), method: :post do %>
+      <%= link_to participation_declineds_path(current_user.participation(@event)), method: :post do %>
         <button href="#" class="btn btn-light btn-block"><%= inline_svg 'times.svg', class: 'grey-svg' %></button>
       <% end %>
     </div>

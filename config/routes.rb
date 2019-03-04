@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :events, only: [:show, :new, :create, :edit, :update]
+  resources :events, only: [:show, :new, :create, :edit, :update] do
+    scope module: :events do
+      resources :statuses, only: :update
+    end
+  end
 
   resources :participations, only: [:index] do
     scope module: :participations do

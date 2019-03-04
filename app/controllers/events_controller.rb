@@ -10,7 +10,9 @@ class EventsController < ApplicationController
 
     case @event.status
     when "boarding"
-      Participation.create(user: current_user, event: @event)
+      unless Participation.where(user: current_user, event: @event).exists?
+        Participation.create!(user: current_user, event: @event)
+      end
     when "voting"
       @event.set_places unless @event.places.any?
     when "display_result"
@@ -30,7 +32,6 @@ class EventsController < ApplicationController
       render :new
     end
   end
-
 
   private
 
