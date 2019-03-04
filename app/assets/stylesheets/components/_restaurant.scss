@@ -15,6 +15,7 @@
 }
 
 .restaurant-image {
+  border-radius: 5px 5px 0 0;
   height: 170px;
   background-size: cover;
 }
@@ -40,9 +41,6 @@
     color: grey;
     font-weight: light;
   }
-}
-
-input[type="radio"]{
 }
 
 .vote-button {

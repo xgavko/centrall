@@ -1,0 +1,17 @@
+<div class="card" style="width:70vw" id="place-<%= place.id %>">
+  <%= simple_form_for :vote, url: participation_votes_path(participation), method: :post, remote: true do |f| %>
+    <img src="" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h2><%= place.name %></h2>
+      <p><%= place.rating %></p>
+      <p class="discret">107 cours Balguerie Stuttenberg</p>
+      <p class="discret">05 55 55 55 55</p>
+    </div>
+    <%= f.input_field :place_id, value: place.id, as: :hidden %>
+    <% if participation.place == place %>
+      CHOOSEN :)
+    <% else %>
+      <%= f.button :submit, class: 'btn btn-primary upvote', value: "CHOOSE" %>
+    <% end %>
+  <% end %>
+</div>
