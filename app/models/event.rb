@@ -41,26 +41,17 @@ class Event < ApplicationRecord
   end
 
   def set_places
-    location = "location=#{barycenter}"
-    rankby = "&rankby=distance"
-    type = "&type=#{kind}"
-    key = "&key=#{ENV['GOOGLE_PLACES_API_KEY']}"
+    @client = GooglePlaces::Client.new(ENV['GOOGLE_PLACES_API_KEY'])
+    spots = @client.spots(barycenter.split(",").first.to_f,barycenter.split(",").last.to_f, :types => 'restaurant')
 
-    parameters = "#{location}#{rankby}#{type}#{key}"
-
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?#{parameters}"
-
-    places_serialized = open(url).read
-    places_parsed = JSON.parse(places_serialized)
-
-    places = places_parsed["results"].first(3)
+    places = spots.first(3)
     places.each do |place|
       data = {
-        google_id: place["place_id"],
-        name: place["name"],
-        rating: place["rating"],
-        latitude: place.dig("geometry", "location", "lat"),
-        longitude: place.dig("geometry", "location", "lng")
+        google_id: place.place_id,
+        name: place.name,
+        rating: place.rating,
+        latitude: place.lat,
+        longitude: place.lng
       }
       create_place(data)
     end
@@ -69,19 +60,12 @@ class Event < ApplicationRecord
   def create_place(data)
     place = places.new(data)
     details = get_details(place)
-    place.address = details["result"]["formatted_address"]
+    place.address = details.formatted_address
     place.save
   end
 
   def get_details(establishment)
-    key = "&key=#{ENV['GOOGLE_PLACES_API_KEY']}"
-    fields = "&fields=formatted_address,icon,formatted_phone_number,website,reviews"
-
-    parameters2 = "place_id=#{establishment.google_id}#{fields}#{key}"
-
-    url_detail = "https://maps.googleapis.com/maps/api/place/details/json?#{parameters2}"
-
-    details_serialized = open(url_detail).read
-    JSON.parse(details_serialized)
+    @client = GooglePlaces::Client.new(ENV['GOOGLE_PLACES_API_KEY'])
+    @client.spot(establishment.google_id)
   end
 end
