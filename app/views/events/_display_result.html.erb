@@ -13,7 +13,13 @@
     <h1 class="result-title"><%= @event.name %></h1>
     <h6 class="result-subtitle mb-2 text-muted">YOUR APPOINTMENT</h6>
 
-
-
+    <div class="result-details">
+      <ul>
+        <li><%= inline_svg "wine-glass.svg" %><%= @event.chosen_place.name %></li>
+        <li><%= inline_svg "calendar.svg" %><%= @event.start_at.strftime("%A %-d %B %Y, at %H:%M") %></li>
+        <li><%= inline_svg "address.svg" %><%= @event.chosen_place.address%></li>
+      </ul>
+    </div>
   </div>
+  <h1>Have a great time!</h1>
 </div>
