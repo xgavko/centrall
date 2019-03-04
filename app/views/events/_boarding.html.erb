@@ -7,18 +7,18 @@
   <% end %>
 </div>
 
-<div class='panel-bottom text-center <%= "panel-hidden" unless current_user.participation(@event).accepted? %>' id='boarding-3'>
+<div class='panel-bottom text-center <%= 'panel-hidden' unless current_user.participation(@event).accepted? %>' id='boarding-3'>
   <h4>Your friends are boarding!</h4>
   <p>Votes will start in</p>
   <h1>TIMER</h1>
   <div class="row">
     <div class="col-4">
       <%= link_to participation_declineds_path(current_user.participation(@event)), method: :post do %>
-        <button href="#" class="btn btn-light btn-block">Cancel</button>
+        <button href="#" class='btn btn-light btn-block'>Cancel</button>
       <% end %>
     </div>
     <div class="col-8">
-        <button href="#" class="btn btn-primary btn-block">Skip Timer</button>
+        <button href="#" class='btn btn-primary btn-block'>Skip Timer</button>
     </div>
   </div>
 </div>

@@ -3,7 +3,9 @@
     <img src="https://api.adorable.io/avatars/285/nicolas" class="avatar mr-2">
     <div>
       <strong><%= participation.user.username.capitalize %></strong>
-      <p><%= participation.address %></p>
+      <% unless participation.address.nil? %>
+        <p><%= participation.address %></p>
+      <% end %>
     </div>
   </div>
   <div class='p-3'>
