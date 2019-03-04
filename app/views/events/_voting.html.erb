@@ -18,10 +18,12 @@
             <p class="discret">05 55 55 55 55</p>
           </div>
           <%= link_to participation_votes_path(current_user.participation(event)), method: :post, class: 'vote-button' do %>
+
             <div class="btn btn-primary">
               <h3>Vote</h3>
             </div>
           <% end %>
+
         </div>
       </label>
     <% end %>

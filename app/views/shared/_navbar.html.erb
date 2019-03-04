@@ -12,7 +12,9 @@
 
     <div class="flyout-links">
       <a href="#">View my events</a>
-      <a href="#">Log out</a>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= t(".sign_out", default: "Log out") %>
+      <% end %>
     </div>
 
     <div class="flyout-shadow flyout-close"></div>
