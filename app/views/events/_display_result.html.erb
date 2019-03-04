@@ -1,31 +1,25 @@
-<h1>The place to be ! </h1>
-
 <div
   id="map"
   style="width: 100%;
-  height: 200px;"
+  height: 50vh;"
   data-marker='<%= raw @event.chosen_place.coordinates.to_json %>'
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 
 
-<div class="card">
-  <div class="card-body">
+<div class="result">
+  <div class="result-body">
 
-    <h5 class="card-title">Choix final</h5>
-    <h6 class="card-subtitle mb-2 text-muted"><%= @event.chosen_place.name %></h6>
+    <h1 class="result-title"><%= @event.name %></h1>
+    <h6 class="result-subtitle mb-2 text-muted">YOUR APPOINTMENT</h6>
 
-      <div class="row">
-         <p class="card-text" ><%= @event.chosen_place.address %></p>
-      </div>
-
-      <div class="row">
-       <p class="card-text" >05 55 55 55 55</p>
-      </div>
-
-      <div class="row">
-        <p class="card-text" >Tu devras partir à 20h15 </p>
-      </div>
-
+    <div class="result-details">
+      <ul>
+        <li><%= inline_svg "wine-glass.svg" %><%= @event.chosen_place.name %></li>
+        <li><%= inline_svg "calendar.svg" %><%= @event.start_at.strftime("%A %-d %B %Y, at %H:%M") %></li>
+        <li><%= inline_svg "address.svg" %><%= @event.chosen_place.address%></li>
+      </ul>
+    </div>
   </div>
+  <h1>Have a great time!</h1>
 </div>
