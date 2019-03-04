@@ -10,12 +10,12 @@ class Participation < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  after_validation :lat_changed?
+  after_validation :lat_present?
 
   private
 
-  def lat_changed?
-    if accepted? && !latitude_changed?
+  def lat_present?
+    if accepted? && latitude.blank?
       errors.add(:address, 'You need to add a proper address')
     end
   end

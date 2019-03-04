@@ -9,6 +9,7 @@ import { geolocButton } from '../components/geolocation.js';
 import '../components/flyoutnavbar.js';
 import '../components/boarding.js';
 import { initCountdown } from '../plugins/init_countdown'
+import '../components/voting.js';
 
 initMapbox();
 initAutocomplete();

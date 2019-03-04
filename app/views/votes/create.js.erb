@@ -1,0 +1,9 @@
+var cardEl = document.getElementById("place-<%= @place.id %>");
+var newCardEl = createElementFromHTML('<%= j render "places/place", participation: @participation, place: @place %>');
+cardEl.parentNode.replaceChild(newCardEl, cardEl);
+
+<% if @old_place %>
+  var cardEl = document.getElementById("place-<%= @old_place.id %>");
+  var newCardEl = createElementFromHTML('<%= j render "places/place", participation: @participation, place: @old_place %>');
+  cardEl.parentNode.replaceChild(newCardEl, cardEl);
+<% end %>
