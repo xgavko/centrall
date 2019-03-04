@@ -8,30 +8,25 @@
 
         <%# use input.object if you want to access the tag instance %>
 
-        <div class="restaurant-slate" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(<%= input.object %>); background-size: cover;">
+        <div class="restaurant-card">
+          <div class="restaurant-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= input.object %>);">
+          </div>
           <div class="restaurant-info">
             <h2><%= input.object.name %></h2>
             <p><%= input.object.rating %></p>
-
+            <p class="discret">107 cours Balguerie Stuttenberg</p>
+            <p class="discret">05 55 55 55 55</p>
           </div>
-          <div class="restaurant-rating">
-            <p><%= input.object.rating %></p>
-            <i class="fas fa-star"></i>
-          </div>
-
           <%= link_to participation_votes_path(current_user.participation(event)), method: :post, class: 'vote-button' do %>
             <div class="btn btn-primary">
-              <h3>+</h3>
+              <h3>Vote</h3>
             </div>
           <% end %>
-
         </div>
       </label>
     <% end %>
-
     <%= f.button :submit %>
   <% end %>
-
 </div>
 
 
