@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'inline_svg'
 gem 'geocoder'
+gem 'google_places'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
