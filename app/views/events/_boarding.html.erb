@@ -3,25 +3,22 @@
 <hr>
   <h5>PARTICIPANTS</h5>
   <% event.participations.each do |participation| %>
-    <div class="participant">
-      <div class="">
-        <img src="https://api.adorable.io/avatars/285/nicolas" class="avatar mr-2">
-        <span><%= participation.user.username.capitalize %></span>
-      </div>
-      <div class='p-3'>
-        <% if participation.pending? %>
-          <%= inline_svg 'question-mark.svg', class: 'grey-svg' %>
-        <% elsif participation.accepted? %>
-          <%= inline_svg 'check.svg', class: 'green-svg' %>
-        <% else %>
-          <%= inline_svg 'times.svg', class: 'red-svg' %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'participations/participation', participation: participation %>
   <% end %>
 </div>
 
-<div class="bottom-rectangle">
+<div class='panel-bottom <%= "panel-hidden" unless current_user.participation(event).accepted? %>' id='boarding-3'>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis doloribus earum exercitationem, labore blanditiis mollitia corporis possimus doloremque similique eaque tempora sapiente assumenda, sunt, at repellendus? Cupiditate totam dolores maxime.
+</div>
+
+<div class='panel-bottom panel-hidden' id='boarding-2'>
+  <h4 class='text-center'>Where will you be leaving from?</h4>
+  <div id='participation-form'>
+    <%= render 'participations/form', participation: current_user.participation(event) %>
+  </div>
+</div>
+
+<div class='panel-bottom <%= "panel-hidden" unless current_user.participation(event).pending? %>' id='boarding-1'>
   <h4 class='text-center'>Are you joining?</h4>
   <div class="row">
     <div class="col-4">
@@ -30,21 +27,12 @@
       <% end %>
     </div>
     <div class="col-8">
-        <button href="#" class="btn btn-primary btn-block" id="launch-geoloc"><%= inline_svg 'check.svg', class: 'white-svg' %></button>
+        <button href="#" class="btn btn-primary btn-block" id='join-button'><%= inline_svg 'check.svg', class: 'white-svg' %></button>
     </div>
   </div>
+</div>
 
-    <div class=''>
-      <h4 class='text-center'>Where will you be leaving from?</h4>
-      <%= simple_form_for current_user.participation(event), url: participation_accepteds_path(current_user.participation(event)), method: :post do |f| %>
-        <div class="input-group flex-nowrap">
-          <%= f.input_field :address, error: 'Not a valid address' %>
-          <div class="input-group-append">
-            <a href="#" class="btn btn-secondary" id="geoloc"><%= inline_svg 'gps.svg', class: 'white-svg' %></a>
-          </div>
-        </div>
-        <%= f.submit 'Submit', class: 'btn btn-primary btn-block geoloc-submit' %>
-      <% end %>
-    </div>
-  </div>
+
+
+
 

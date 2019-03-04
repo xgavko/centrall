@@ -1,0 +1,16 @@
+<div class="participant" id='participation-<%= participation.id %>'>
+  <div class="">
+    <img src="https://api.adorable.io/avatars/285/nicolas" class="avatar mr-2">
+    <span><%= participation.user.username.capitalize %></span>
+    <%= participation.address %>
+  </div>
+  <div class='p-3'>
+    <% if participation.pending? %>
+      <%= inline_svg 'question-mark.svg', class: 'grey-svg' %>
+    <% elsif participation.accepted? %>
+      <%= inline_svg 'check.svg', class: 'green-svg' %>
+    <% else %>
+      <%= inline_svg 'times.svg', class: 'red-svg' %>
+    <% end %>
+  </div>
+</div>

@@ -13,16 +13,18 @@ hr {
 border: 0.5px solid #E2E2E2;
 }
 
-.bottom-rectangle{
-position: absolute;
-padding: 0 15px;
-width: 100vw;
-height: 40%;
-bottom: 0;
-left: 0px;
-top: 509px;
-background: #FFFFFF;
-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05), 0px 0px 10px rgba(0, 0, 0, 0.1);
+.panel-bottom {
+  position: fixed;
+  padding: 15px;
+  width: 100vw;
+  bottom: 0;
+  left: 0px;
+  background: white;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05), 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 300ms ease;
+  &.panel-hidden {
+    transform: translateY(100%);
+  }
 }
 
 .geoloc-submit{
