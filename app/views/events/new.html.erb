@@ -1,3 +1,9 @@
+<% content_for(:action) do %>
+  <%= link_to root_path do %>
+      <%= inline_svg "logo.svg", class: "logo" %>
+    <% end %>
+<% end %>
+
 <div class="container">
   <h2 class='form-title text-center'>Create your Event</h2>
 

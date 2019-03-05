@@ -5,6 +5,18 @@ class Participations::AcceptedsController < ApplicationController
     @participation.status = :accepted
     @participation.save
 
+    ActionCable.server.broadcast(
+      "event-#{@participation.event.id}",
+      {
+        type: 'update_participation',
+        participation_id: @participation.id,
+        html: ApplicationController.render(
+          partial: 'participations/participation',
+          locals: { participation: @participation }
+        )
+      }
+    )
+
     respond_to do |format|
       format.js # participations/accepteds/create.js
     end

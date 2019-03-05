@@ -1,1 +1,7 @@
+<% content_for(:action) do %>
+  <%= link_to root_path do %>
+      <%= inline_svg "logo.svg", class: "logo" %>
+    <% end %>
+<% end %>
+
 <%= render @event.status, event: @event %>

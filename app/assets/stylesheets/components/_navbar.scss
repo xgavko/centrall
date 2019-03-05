@@ -18,15 +18,22 @@
   justify-content: center;
 }
 
+.navbar-timer {
+  width: 44px;
+}
+
+#timer-navbar {
+  color: white;
+  font-size: 14px;
+}
+
 /* Logo */
 .navbar-logo {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
   .logo {
   width: 5em;
   height: 2.5em;
-  margin-right: 44px;
   }
 }
 

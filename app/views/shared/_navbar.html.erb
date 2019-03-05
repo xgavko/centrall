@@ -24,11 +24,16 @@
     </a>
   </div>
 
+  <div>
+    <%= content_for(:home) %>
+  </div>
 
   <div class="navbar-logo">
-    <%= link_to root_path do %>
-      <%= inline_svg "logo.svg", class: "logo" %>
-    <% end %>
+    <%= content_for(:action) %>
+  </div>
+
+  <div class="navbar-timer" >
+    <span id=timer-navbar></span>
   </div>
 </div>
 

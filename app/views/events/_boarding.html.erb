@@ -22,11 +22,13 @@
         <button href="#" class='btn btn-light btn-block'>Cancel</button>
       <% end %>
     </div>
+    <% if current_user == @event.user %>
     <div class="col-8">
       <%= link_to event_status_path(@event), method: :put do %>
         <button href="#" class='btn btn-primary btn-block'>Skip Timer</button>
       <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 
@@ -51,6 +53,33 @@
   </div>
 </div>
 
+
+
+<% content_for(:after_js) do %>
+  <script>
+    App.cable.subscriptions.create(
+      {
+        channel: "EventsChannel",
+        event_id: <%= @event.id %>
+      },
+      {
+        received: function(data) {
+          var participantsEl = document.querySelector('.container-participant');
+          switch (data.type) {
+            case 'new_participation':
+              participantsEl.insertAdjacentHTML('beforeend', data.html);
+              break;
+            case 'update_participation':
+              var oldParticipation = document.getElementById('participation-' + data.participation_id);
+              var newParticipation = createElementFromHTML(data.html);
+              oldParticipation.parentNode.replaceChild(newParticipation, oldParticipation);
+              break;
+          }
+        }
+      }
+    );
+  </script>
+<% end %>
 
 
 
