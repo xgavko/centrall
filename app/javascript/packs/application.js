@@ -7,6 +7,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete.js';
 import { geolocButton } from '../components/geolocation.js';
 import { initCountdown } from '../plugins/init_countdown.js';
+import { initCountdownVote } from '../plugins/init_countdownvote.js';
 import '../components/flyoutnavbar.js';
 import '../components/boarding.js';
 
@@ -14,6 +15,7 @@ initMapbox();
 initAutocomplete();
 geolocButton();
 initCountdown();
+initCountdownVote();
 
 window.geolocButton = geolocButton;
 window.createElementFromHTML = function(htmlString) {

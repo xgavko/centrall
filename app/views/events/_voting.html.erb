@@ -1,4 +1,4 @@
-<div class="restaurant-wrapper">
+<div class="restaurant-wrapper" data-updated_at="<%= event.updated_at.iso8601 %>">
   <div class="scroll-snap">
     <% @event.places.shuffle.each do |place| %>
       <%= render "places/place", participation: current_user.participation(event), place: place %>
