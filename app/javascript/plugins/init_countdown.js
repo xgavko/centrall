@@ -21,6 +21,5 @@ const initCountdown = () => {
   button.addEventListener('click', (event) => {
     document.getElementById("timer").html(duration.format("hh:mm:ss"));
       }, interval);
-  };
 
 export { initCountdown };
