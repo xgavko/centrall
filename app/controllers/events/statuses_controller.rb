@@ -1,8 +1,13 @@
 class Events::StatusesController < ApplicationController
   def update
     event = Event.find(params[:event_id])
-    event.status = :voting
+    if event.boarding?
+      event.status = :voting
+    elsif event.voting?
+      event.status = :display_result
+    end
     event.save
+
     redirect_to event
   end
 end

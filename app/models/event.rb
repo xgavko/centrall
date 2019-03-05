@@ -43,7 +43,6 @@ class Event < ApplicationRecord
   def set_places
     @client = GooglePlaces::Client.new(ENV['GOOGLE_PLACES_API_KEY'])
     spots = @client.spots(barycenter.split(",").first.to_f,barycenter.split(",").last.to_f, :types => kind, :rankby => 'distance')
-
     places = spots.select { |spot| !spot.rating.nil? }.first(3)
     places.each do |place|
       data = {

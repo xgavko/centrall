@@ -2,14 +2,12 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
   def show
-    # if @event.created_at + 30.minutes < Time.current
-    #   @event.display_result!
-    # elsif @event.created_at + 15.minutes < Time.current
-    #   @event.voting!
-    # end
-
     case @event.status
     when "boarding"
+      if @event.created_at + 15.minutes < Time.current
+        @event.voting!
+        redirect_to event_path(@event)
+      end
       unless Participation.where(user: current_user, event: @event).exists?
         participation = Participation.create!(user: current_user, event: @event)
         ActionCable.server.broadcast(
@@ -24,6 +22,12 @@ class EventsController < ApplicationController
         )
       end
     when "voting"
+      first_cond = @event.participations.where(status: :accepted).count == @event.participations.where.not(place: nil).count
+      second_cond = @event.updated_at + 15.minutes < Time.current
+      if first_cond || second_cond
+        @event.display_result!
+        redirect_to event_path(@event)
+      end
       @event.set_places unless @event.places.any?
     when "display_result"
       @event.final_result!
@@ -35,8 +39,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = current_user.events.new(event_params)
-    if event.save
+    @event = current_user.events.new(event_params)
+    if @event.save
       redirect_to event
     else
       render :new
