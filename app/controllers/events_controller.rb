@@ -11,7 +11,17 @@ class EventsController < ApplicationController
     case @event.status
     when "boarding"
       unless Participation.where(user: current_user, event: @event).exists?
-        Participation.create!(user: current_user, event: @event)
+        participation = Participation.create!(user: current_user, event: @event)
+        ActionCable.server.broadcast(
+          "event-#{@event.id}",
+          {
+            type: 'new_participation',
+            html: ApplicationController.render(
+              partial: 'participations/participation',
+              locals: { participation: participation }
+            )
+          }
+        )
       end
     when "voting"
       @event.set_places unless @event.places.any?
