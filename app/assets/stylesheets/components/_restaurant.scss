@@ -1,9 +1,24 @@
 .restaurant-wrapper {
   width: 95vw;
+  height: 80vh;
   margin: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.scroll-snap {
+  scroll-snap-type: x mandatory;
+  display: flex;
+  overflow-x: scroll;
+  vertical-align: bottom;
 }
 
 .restaurant-card {
+  min-width: 240px;
+  height: 300px;;
+  scroll-snap-align: center;
+
+  margin: 10px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -22,10 +37,11 @@
 
 .restaurant-info {
   width: 100%;
-  padding: 10px 10px;
+  height: 100px;
+  padding: 0px 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   h2 {
     font-size: 16px;
     font-family: Muli;
@@ -44,18 +60,12 @@
 }
 
 .vote-button {
-  display: none;
-  width: 100px;
-  flex-shrink: 0;
-  display: flex;
-  margin: 10px;
-  align-self: flex-end;
-  color: white;
   h3 {
     margin: 0;
     font-size: 18px;
   }
   .btn {
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
