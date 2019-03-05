@@ -10,11 +10,23 @@
   background: linear-gradient(26.68deg, #289F00 20.45%, #96DC22 100%)
 }
 
+.container-create-event {
+  padding: 0 15px;
+}
 .event-slate{
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #f1fced;
+}
+
+.title-event{
+  display: flex;
+  align-items: center;
+  h5{
+    font-size: 12px;
+    padding-left: 15px;
+  }
 }
 
 

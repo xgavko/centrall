@@ -4,35 +4,38 @@
 
 
 <% if user_signed_in? && current_user.events.any? %>
+<div class="container-create-event">
   <div class="create-event">
-      <h1> My events </h1>
+    <h1> My events </h1>
   </div>
 
-  <div class='event-slate'>
+<div class='event-slate'>
+  <div class="title-event">
     <div class="svg-glass">
       <%= inline_svg('glass.svg') %>
     </div>
-
-    <div class="title-event">
       <h5> Restau avec Michel</h5>
-    </div>
+  </div>
 
+  <div class="title-event">
     <div class="date">
       <h6> 15/03/2019</h6>
     </div>
-
-    <div class="status" >
-      <span>Open</span>
+    <div class="status" id="police">
+      <h5>Open</h5>
     </div>
   </div>
+</div>
 
-  <div class='event-slate' >
-    <div class="svg-glass">
-      <%= inline_svg('glass.svg') %>
-    </div>
+<div class='event-slate'>
     <div class="title-event">
-      <h5> Soirée d'anniv</h5>
+      <div class="svg-glass">
+        <%= inline_svg('glass.svg') %>
+      </div>
+      <h5> Anniv Michou</h5>
     </div>
+
+  <div class="title-event">
     <div class="date">
       <h6> 15/03/2019</h6>
     </div>
@@ -40,14 +43,19 @@
       <h6>Closed</h6>
     </div>
   </div>
+</div>
+
 
   <div class='event-slate'>
-    <div class="svg-glass">
-      <%= inline_svg('glass.svg') %>
-    </div>
     <div class="title-event">
+      <div class="svg-glass">
+        <%= inline_svg('glass.svg') %>
+      </div>
       <h5> Afterwork</h5>
     </div>
+
+
+    <div class="title-event">
     <div class="date">
       <h6> 15/03/2019</h6>
     </div>
@@ -55,6 +63,7 @@
       <h6>Closed</h6>
     </div>
   </div>
+</div>
 
   <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
 
@@ -66,6 +75,7 @@
 
     <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
     <hr>
+    </div>
   </div>
 <% end %>
 
