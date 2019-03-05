@@ -64,7 +64,7 @@ class Event < ApplicationRecord
     if details.photos[0]
       place.photo = details.photos[0].fetch_url(800)
     else
-      place.photo = ""
+      place.photo = "https://cl.buscafs.com/www.metatube.com/public/uploads/images/418337.jpg"
     end
     place.save
   end
