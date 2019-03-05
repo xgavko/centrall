@@ -1,7 +1,9 @@
 <div class="restaurant-wrapper">
-  <% @event.places.shuffle.each do |place| %>
-    <%= render "places/place", participation: current_user.participation(event), place: place %>
-  <% end %>
+  <div class="scroll-snap">
+    <% @event.places.shuffle.each do |place| %>
+      <%= render "places/place", participation: current_user.participation(event), place: place %>
+    <% end %>
+  </div>
 </div>
 
 
