@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'pages#home'
+  root to: 'participations#index'
 
   resources :events, only: [:show, :new, :create, :edit, :update] do
     scope module: :events do
