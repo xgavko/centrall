@@ -42,9 +42,9 @@ class Event < ApplicationRecord
 
   def set_places
     @client = GooglePlaces::Client.new(ENV['GOOGLE_PLACES_API_KEY'])
-    spots = @client.spots(barycenter.split(",").first.to_f,barycenter.split(",").last.to_f, :types => 'restaurant')
+    spots = @client.spots(barycenter.split(",").first.to_f,barycenter.split(",").last.to_f, :types => kind, :rankby => 'distance')
 
-    places = spots.first(3)
+    places = spots.select { |spot| !spot.rating.nil? }.first(3)
     places.each do |place|
       data = {
         google_id: place.place_id,
@@ -61,7 +61,11 @@ class Event < ApplicationRecord
     place = places.new(data)
     details = get_details(place)
     place.address = details.formatted_address
-    place.photo = details.photos[0].fetch_url(800)
+    if details.photos[0]
+      place.photo = details.photos[0].fetch_url(800)
+    else
+      place.photo = ""
+    end
     place.save
   end
 
