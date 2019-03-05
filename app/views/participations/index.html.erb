@@ -13,22 +13,14 @@
   </div>
 <% @participations.each do |participation|  %>
 <div class='event-slate'>
-
+  <div class="svg-glass">
+    <%= inline_svg('glass.svg') %>
+  </div>
   <div class="title-event">
-    <div class="svg-glass">
-      <%= inline_svg('glass.svg') %>
-    </div>
   <h5><%= participation.event.name %></h5>
+      <h6 class="date"> <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %></h6>
   </div>
-
-  <div class="title-event">
-    <div class="date">
-      <h6> <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %></h6>
-    </div>
-    <div class="status">
-      <h5><%= participation.event.status %></h5>
-    </div>
-  </div>
+  <h5 class="status"><%= participation.event.status %></h5>
 </div>
 <% end %>
 
