@@ -7,8 +7,67 @@
   <p> Tous vos events que vous créer ou auxquels vous participez apparaîtront ici </p>
 
   <%= link_to new_event_path do %>
-  <button href="#" class="btn btn-primary btn-block">Create event</button>
+    <button href="#" class="btn btn-primary btn-block">Create event</button>
   <% end %>
+  <hr>
 </div>
 
 
+
+<div class="create-event">
+    <h1> My events </h1>
+</div>
+
+  <div class='event-slate'>
+    <div class="svg-glass">
+      <%= inline_svg('glass.svg') %>
+    </div>
+
+    <div class="title-event">
+      <h5> Restau avec Michel</h5>
+    </div>
+
+    <div class="date">
+      <h6> 15/03/2019</h6>
+    </div>
+
+    <div class="status" >
+      <span>Open</span>
+    </div>
+  </div>
+
+  <div class='event-slate' >
+    <div class="svg-glass">
+      <%= inline_svg('glass.svg') %>
+    </div>
+    <div class="title-event">
+      <h5> Soirée d'anniv</h5>
+    </div>
+    <div class="date">
+      <h6> 15/03/2019</h6>
+    </div>
+    <div class="status">
+      <h6>Closed</h6>
+    </div>
+  </div>
+
+  <div class='event-slate'>
+    <div class="svg-glass">
+      <%= inline_svg('glass.svg') %>
+    </div>
+    <div class="title-event">
+      <h5> Afterwork</h5>
+    </div>
+    <div class="date">
+      <h6> 15/03/2019</h6>
+    </div>
+    <div class="status">
+      <h6>Closed</h6>
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <%= link_to new_event_path do %>
+      <button href="#" class="btn btn-primary btn-block">Create event</button>
+    <% end %>
+  </div>

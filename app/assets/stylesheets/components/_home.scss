@@ -7,7 +7,17 @@
   justify-content: center;
   background-size: cover;
   border-radius: 2px;
+  background: linear-gradient(26.68deg, #289F00 20.45%, #96DC22 100%)
 }
+
+.event-slate{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1fced;
+}
+
+
 .logo-white {
   position: absolute;
   display: block;
@@ -21,6 +31,14 @@
 .logohome {
   width: 100vw;
   margin: auto;
+}
+
+.glass{
+  position: absolute;
+  left: 0.29%;
+  right: 90.46%;
+  top: 4.76%;
+  bottom: 0%;
 }
 
 h2 {
