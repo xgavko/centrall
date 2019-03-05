@@ -1,4 +1,5 @@
 
+
 const geolocButton = function() {
   const btn = document.getElementById('geoloc');
   const ad_field = document.getElementById('participation_address');
