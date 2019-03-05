@@ -15,6 +15,15 @@ class EventsController < ApplicationController
       end
     when "voting"
       @event.set_places unless @event.places.any?
+
+      @markers = @event.places.map do |place|
+        {
+          lat: place.latitude,
+          lng: place.longitude
+        }
+      end
+      @center = @event.process_barycenter.reverse
+
     when "display_result"
       @event.final_result!
     end
