@@ -1,5 +1,6 @@
 <div class="wrapper">
    <%= inline_svg "logo.svg", class: "logo-white" %>
+   <%= inline_svg "berr-h-p.svg", class: "berr-h-p" %>
 </div>
 
 
@@ -60,8 +61,7 @@
 
 <% else %>
   <div class="container text-center">
-    <h2 class=''> Hello !</h2>
-    <%= inline_svg('Party.svg') %>
+    <h2 class=''> Quickly find a meeting place  !</h2>
     <p> Tous vos events que vous créer ou auxquels vous participez apparaîtront ici </p>
 
     <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
