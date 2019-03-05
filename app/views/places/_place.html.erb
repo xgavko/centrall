@@ -1,11 +1,10 @@
 <div class="restaurant-card" style="width:70vw" id="place-<%= place.id %>">
   <%= simple_form_for :vote, url: participation_votes_path(participation), method: :post, remote: true do |f| %>
-    <img src="https://www.wien.info/media/images/41993-das-loft-sofitel-so-vienna-3to2.jpeg/image_teaser-all" class="card-img-top" alt="restaurant image">
+    <img src="<%= place.photo %>" class="restaurant-image" alt="restaurant image">
     <div class="restaurant-info">
       <h2><%= place.name %></h2>
-      <p><%= place.rating %></p>
-      <p class="discret">107 cours Balguerie Stuttenberg</p>
-      <p class="discret">05 55 55 55 55</p>
+      <p><%= place.rating %> <%= inline_svg 'star.svg', class: 'grey-svg' %></p>
+      <p><%= place.address %></p>
     </div>
 
     <div class="vote-button">
