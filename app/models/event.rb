@@ -25,7 +25,7 @@ class Event < ApplicationRecord
     chosen_place.save
   end
 
-  def barycenter
+  def process_barycenter
     latitudes = []
     longitudes = []
     participations.each do |participation|
@@ -37,7 +37,11 @@ class Event < ApplicationRecord
     end
     return nil if latitudes.empty?
 
-    [(latitudes.sum / latitudes.size), (longitudes.sum / longitudes.size)].join(',')
+    [(latitudes.sum / latitudes.size), (longitudes.sum / longitudes.size)]
+  end
+
+  def barycenter
+    process_barycenter.join(',')
   end
 
   def set_places
