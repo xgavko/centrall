@@ -15,6 +15,7 @@ initMapbox();
 initAutocomplete();
 geolocButton();
 initCountdown();
+initCountdownVote();
 
 window.geolocButton = geolocButton;
 window.createElementFromHTML = function(htmlString) {

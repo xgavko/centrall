@@ -1,15 +1,12 @@
 import moment from "moment";
 import "moment-duration-format";
 
-document.getElementById("restaurant-wrapper").addEventListener("load", initCountdownVote);
-
 const initCountdownVote = () => {
-  var votingTimeEl = document.querySelector(".boarding-time");
-  if (!boardingTimeEl) {
+  var votingTimeEl = document.querySelector(".restaurant-wrapper");
+  if (!votingTimeEl) {
     return;
   }
-  var startAt = boardingTimeEl.dataset.start_at;
-
+  var startAt = votingTimeEl.dataset.updated_at;
   var interval = 1000;
   var currentTime = moment().unix();
   var creationTime = moment(startAt).unix();
@@ -17,8 +14,7 @@ const initCountdownVote = () => {
   var mainDiffTime = (endTime - currentTime);
   var duration = moment.duration(mainDiffTime * interval, 'milliseconds');
 
-  const timer = document.getElementById("timer");
-  const button = document.querySelector(".geoloc-submit");
+  var timer = document.getElementById("timer-navbar");
   timer.innerHTML = duration.format("hh:mm:ss");
 
   setInterval(function() {
@@ -27,4 +23,5 @@ const initCountdownVote = () => {
   }, interval);
 };
 
-export { initCountdown };
+export { initCountdownVote };
+
