@@ -1,3 +1,5 @@
+<% content_for(:home) %>
+
 <div class="wrapper">
    <%= inline_svg "logo.svg", class: "logo-white" %>
    <%= inline_svg "berr-h-p.svg", class: "berr-h-p" %>
@@ -15,14 +17,15 @@
     <div class="svg-glass">
       <%= inline_svg('glass.svg') %>
     </div>
-      <h5> Restau avec Michel</h5>
+    <%#each %>
+      <h5><%#=event.name %></h5>
   </div>
 
   <div class="title-event">
     <div class="date">
       <h6> 15/03/2019</h6>
     </div>
-    <div class="status" id="police">
+    <div class="status">
       <h5>Open</h5>
     </div>
   </div>
