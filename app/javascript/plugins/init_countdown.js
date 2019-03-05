@@ -16,13 +16,10 @@ const initCountdown = () => {
   var mainDiffTime = (endTime - currentTime) * 1000;
   var duration = moment.duration(mainDiffTime, 'milliseconds');
 
-  $('#main-passage .countdown').html(duration.format("hh:mm:ss"));
-
   const button = document.querySelector(".geoloc-submit");
 
   button.addEventListener('click', (event) => {
-    getElementById("boarding-3").html(duration.format("hh:mm:ss"));
+    document.getElementById("timer").html(duration.format("hh:mm:ss"));
       }, interval);
-}
 
 export { initCountdown };
