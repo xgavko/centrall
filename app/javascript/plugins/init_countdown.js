@@ -1,4 +1,3 @@
-import _ from "underscore";
 import moment from "moment";
 import "moment-duration-format";
 
@@ -8,19 +7,23 @@ const initCountdown = () => {
   if (!boardingTimeEl) {
     return;
   }
+  var startAt = boardingTimeEl.dataset.start_at;
 
-  var currentTime = moment().unix();
-  var creationTime = moment(boardingTimeEl.dataset.start_at).unix();
   var interval = 1000;
-  var endTime = creationTime + 15000;
-  var mainDiffTime = (endTime - currentTime) * 1000;
-  var duration = moment.duration(mainDiffTime, 'milliseconds');
+  var currentTime = moment().unix();
+  var creationTime = moment(startAt).unix();
+  var endTime = creationTime + 15 * 60;
+  var mainDiffTime = (endTime - currentTime);
+  var duration = moment.duration(mainDiffTime * interval, 'milliseconds');
 
+  const timer = document.getElementById("timer");
   const button = document.querySelector(".geoloc-submit");
+  timer.innerHTML = duration.format("hh:mm:ss");
 
-  button.addEventListener('click', (event) => {
-    document.getElementById("timer").html(duration.format("hh:mm:ss"));
-      }, interval);
+  setInterval(function() {
+    duration = moment.duration(duration - interval);
+    timer.innerHTML = duration.format("hh:mm:ss");
+  }, interval);
 };
 
 export { initCountdown };
