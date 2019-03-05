@@ -1,1 +1,85 @@
 
+<% content_for(:home) %>
+
+<div class="wrapper">
+   <%= inline_svg "logo.svg", class: "logo-white" %>
+   <%= inline_svg "berr-h-p.svg", class: "berr-h-p" %>
+</div>
+
+
+<% if user_signed_in? && current_user.events.any? %>
+<div class="container-create-event">
+  <div class="create-event">
+    <h1> My events </h1>
+  </div>
+
+<div class='event-slate'>
+  <div class="title-event">
+    <div class="svg-glass">
+      <%= inline_svg('glass.svg') %>
+    </div>
+
+    <% @participations.each do |participation|  %>
+      <h5><%= participation.event.name %></h5>
+      <% end %>
+  </div>
+
+  <div class="title-event">
+    <div class="date">
+      <h6> 15/03/2019</h6>
+    </div>
+    <div class="status">
+      <h5>Open</h5>
+    </div>
+  </div>
+</div>
+
+<div class='event-slate'>
+    <div class="title-event">
+      <div class="svg-glass">
+        <%= inline_svg('glass.svg') %>
+      </div>
+      <h5> Anniv Michou</h5>
+    </div>
+
+  <div class="title-event">
+    <div class="date">
+      <h6> 15/03/2019</h6>
+    </div>
+    <div class="status">
+      <h6>Closed</h6>
+    </div>
+  </div>
+</div>
+
+
+  <div class='event-slate'>
+    <div class="title-event">
+      <div class="svg-glass">
+        <%= inline_svg('glass.svg') %>
+      </div>
+      <h5> Afterwork</h5>
+    </div>
+
+
+    <div class="title-event">
+    <div class="date">
+      <h6> 15/03/2019</h6>
+    </div>
+    <div class="status">
+      <h6>Closed</h6>
+    </div>
+  </div>
+</div>
+
+  <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
+
+<% else %>
+  <div class="container text-center">
+    <h2 class=''> Quickly find a meeting place  !</h2>
+    <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
+    <hr>
+    </div>
+  </div>
+<% end %>
+
