@@ -9,8 +9,7 @@
     "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
     "places.js": "^1.16.1",
-    "popper.js": "^1.14.7",
-    "underscore": "^1.9.1"
+    "popper.js": "^1.14.7"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
