@@ -61,6 +61,7 @@ class Event < ApplicationRecord
     place = places.new(data)
     details = get_details(place)
     place.address = details.formatted_address
+    place.photo = details.photos[0].fetch_url(800)
     place.save
   end
 
