@@ -2,7 +2,7 @@ import moment from "moment";
 import "moment-duration-format";
 
 const initCountdownVote = () => {
-  var votingTimeEl = document.querySelector(".restaurant-wrapper");
+  var votingTimeEl = document.querySelector(".wrapper-voting");
   if (!votingTimeEl) {
     return;
   }
