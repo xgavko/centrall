@@ -1,31 +1,37 @@
 .wrapper {
   background: #269F00;
-  width: 100vw;
   display: flex;
   align-items: center;
-  height: 60vh;
   justify-content: center;
-  background-size: cover;
-  border-radius: 2px;
+  height: 40vh;
   background: linear-gradient(26.68deg, #289F00 20.45%, #96DC22 100%)
 }
 
 .container-create-event {
   padding: 0 15px;
+  overflow-y:auto;
 }
 
-.event-slate{
+.event-slat {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
+  position: relative;
 }
 
-.title-event{
+.slat-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.title-event {
   align-items: center;
-  h5{
+  h5 {
     font-size: 12px;
     padding-left: 15px;
+    margin-bottom: -0.5px;
   }
 }
 
@@ -39,28 +45,15 @@
   z-index: 1;
 }
 
-.logohome {
-  width: 100vw;
-  margin: auto;
+.punchline {
+  justify-content: center;
+  position: relative;
 }
 
-.glass{
+.glass {
   position: absolute;
   left: 0.29%;
   right: 90.46%;
   top: 4.76%;
   bottom: 0%;
-}
-
-.berr-h-p{
-  opacity: 0.5;
-}
-
-h2 {
-  margin-top: 15px;
-  justify-content: center;
-}
-
-p {
-  justify-content: center;
 }
