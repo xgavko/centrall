@@ -7,3 +7,10 @@ cardEl.parentNode.replaceChild(newCardEl, cardEl);
   var newCardEl = createElementFromHTML('<%= j render "places/place", participation: @participation, place: @old_place %>');
   cardEl.parentNode.replaceChild(newCardEl, cardEl);
 <% end %>
+
+
+// render in #notification-voting an alert
+var notifWrapper = document.getElementById('notification-voting');
+var newNotif = createElementFromHTML('<%= j render "votes/notification" %>');
+notifWrapper.appendChild(newNotif);
+newNotif.classList.remove('alert-hidden');
