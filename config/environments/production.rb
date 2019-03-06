@@ -1,4 +1,7 @@
 Rails.application.configure do
+  config.web_socket_server_url = "wss://action-cable-example.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://action-cable-example.herokuapp.com', 'http://action-cable-example.herokuapp.com']
+
   config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
