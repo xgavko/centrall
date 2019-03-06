@@ -1,6 +1,6 @@
 <%= simple_form_for participation, url: participation_accepteds_path(participation), method: :post, remote: true do |f| %>
-  <div class="input-group flex-nowrap">
-    <%= f.input_field :address, class: "form-control" %>
+  <div class="input-group flex-nowrap address-group">
+    <%= f.input_field :address, class: "form-control address-input" %>
     <div class="input-group-append">
       <a href="#" class="btn btn-secondary" id="geoloc"><%= inline_svg 'gps.svg', class: 'white-svg' %></a>
     </div>
