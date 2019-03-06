@@ -13,8 +13,18 @@
   </div>
 
   <div class="scroll-snap">
+    <div class="false-card">
+      False card
+    </div>
+
     <% @event.places.shuffle.each do |place| %>
+
       <%= render "places/place", participation: current_user.participation(event), place: place %>
-    <% end %>
+      <% end %>
+
+    <div class="false-card">
+      False card
+    </div>
+
   </div>
 </div>
