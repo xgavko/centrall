@@ -4,13 +4,22 @@
     <% end %>
 <% end %>
 
-<div class="container">
+<div class="form-container">
   <h2 class='form-title text-center'>Create your Event</h2>
 
   <%= simple_form_for @event do |f| %>
-    <%= f.input :name, label: 'Your Event should have a name', error: 'The name is mandatory' %>
-    <%= f.input :start_at, :minute_step => 15, label: 'Set the time of your Event', error: 'The date & time are mandatory', class: 'datetime' %>
-    <%= f.input :kind, collection: Event.kinds.keys, as: :radio_buttons %>
+    <%= f.input :name, label: 'What is the occasion ?', error: 'The name is mandatory' %>
+    <%= f.input :start_at, :minute_step => 15, label: 'What time is you meeting ?', error: 'The date & time are mandatory', class: 'datetime' %>
+    <%= f.input :kind, collection: Event.kinds.keys, as: :radio_buttons, label: 'What kind of place do you prefer ?' %>
+
+      <!-- <div class="switch-field">
+        <input type="radio" id="switch_left" name="switch_2" value="<%= Event.kinds.keys.first %>" checked/>
+        <label for="switch_left">Bar</label>
+        <input type="radio" id="switch_right" name="switch_2" value="<%= Event.kinds.keys.last %>" />
+        <label for="switch_right">Restaurant</label>
+      </div>
+ -->
+
     <%= f.button :submit, class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>
