@@ -10,7 +10,7 @@
     </header>
 
     <div class="flyout-links">
-      <a href="#">View my events</a>
+      <a href="#">View Your Events</a>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <%= t(".sign_out", default: "Log out") %>
       <% end %>
@@ -24,12 +24,14 @@
     </a>
   </div>
 
-  <div>
-    <%= content_for(:home) %>
-  </div>
+  <div class="navbar-center">
+    <div>
+      <%= content_for(:home) %>
+    </div>
 
-  <div class="navbar-logo">
-    <%= content_for(:action) %>
+    <div class="navbar-logo">
+      <%= content_for(:action) %>
+    </div>
   </div>
 
   <div class="navbar-timer" >
