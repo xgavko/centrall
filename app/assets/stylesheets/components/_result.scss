@@ -12,13 +12,16 @@
 }
 
 .result li{
-  font-size: 14px;
+  font-size: 12px;
   list-style: none;
+  //white-space: nowrap;
+  //overflow: hidden;
+  //text-overflow: ellipsis;
 }
 .result-icon {
-  display: block;
-  margin: 0 auto;
-  width: 1em;
-  height: 1em;
+  fill: #269F00;
+  height: 20px;
 }
-
+.result-goodbye {
+  text-align: center;
+}
