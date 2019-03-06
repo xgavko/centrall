@@ -10,7 +10,9 @@
     </header>
 
     <div class="flyout-links">
-      <a href="#">View Your Events</a>
+      <%= link_to root_path do %>
+        <span>View Your Events</span>
+      <% end %>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <%= t(".sign_out", default: "Log out") %>
       <% end %>
