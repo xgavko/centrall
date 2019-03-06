@@ -1,11 +1,9 @@
 <h1>
   <%= @event.status.capitalize %> - <%= @event.name %>
 </h1>
-
 <h6 class="boarding-time" data-start_at="<%= @event.created_at.iso8601 %>"><%= @event.created_at.to_formatted_s(:long) %></h6>
-
-<hr>
 <h5 class='title-separator'>PARTICIPANTS</h5>
+
 <div class="container-participant">
   <% @event.participations.each do |participation| %>
     <%= render 'participations/participation', participation: participation %>
@@ -15,7 +13,7 @@
 <div class='panel-bottom text-center <%= 'panel-hidden' unless current_user.participation(@event).accepted? %>' id='boarding-3'>
   <h4>Your friends are boarding!</h4>
   <p>Votes will start in</p>
-  <h1 id="timer">TIMER</h1>
+  <h1 id="timer"></h1>
   <div class="row">
     <div class="col-4">
       <%= link_to participation_declineds_path(current_user.participation(@event)), method: :post do %>
