@@ -2,7 +2,7 @@
   <%= @event.status.capitalize %> - <%= @event.name %>
 </h1>
 
-<div class="wrapper-voting">
+<div class="wrapper-voting" data-updated_at="<%= @event.updated_at %>">
   <div
     id="map"
     class="map-voting"
