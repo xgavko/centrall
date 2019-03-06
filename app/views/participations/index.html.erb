@@ -1,7 +1,8 @@
 <% content_for(:home) %>
 ​
 <div class="wrapper">
-  <div class="punchline">
+  <div class="tagline">
+    <%= inline_svg('background-homecover.svg') %>
    <h2> Quickly find a meeting place !</h2>
  </div>
  </div>
@@ -34,6 +35,7 @@
 <% else %>
  <div class="container text-center">
     <p>Find easily a nice place to meet with your friends!</p>
+    <p>Get a centra</p>
   <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
   <hr>
   </div>
