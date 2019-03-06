@@ -20,7 +20,12 @@ class Event < ApplicationRecord
     place1_votes = participations.where(place: places[0])
     place2_votes = participations.where(place: places[1])
     place3_votes = participations.where(place: places[2])
-    chosen_place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
+
+    if place1_votes.empty? && place2_votes.empty? && place3_votes.empty?
+      chosen_place = places.first
+    else
+      chosen_place = [place1_votes, place2_votes, place3_votes].sort_by { |votes| votes.length }.last.first.place
+    end
     chosen_place.chosen = true
     chosen_place.save
   end
@@ -76,4 +81,22 @@ class Event < ApplicationRecord
     @client = GooglePlaces::Client.new(ENV['GOOGLE_PLACES_API_KEY'])
     @client.spot(establishment.google_id)
   end
+
+  # def no_votes?
+  #   # Event.first.participations.first.place
+  #   votes = []
+  #   @event.participations.each do |participation|
+  #     votes << participation unless participation.place.nil?
+  #   end
+  #   votes.empty?
+  # end
 end
+
+
+
+
+
+
+
+
+
