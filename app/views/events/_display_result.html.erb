@@ -4,8 +4,8 @@
   height: 50vh;"
   data-marker='<%= raw @event.chosen_place.coordinates.to_json %>'
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-center='<%= raw @event.chosen_place.coordinates.to_json %>'
 ></div>
-
 
 <div class="result">
   <div class="result-body">
