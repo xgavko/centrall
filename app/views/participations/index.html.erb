@@ -1,37 +1,41 @@
 <% content_for(:home) %>
-
+​
 <div class="wrapper">
-   <%= inline_svg "logo.svg", class: "logo-white" %>
-   <%= inline_svg "berr-h-p.svg", class: "berr-h-p" %>
-</div>
-
-
+  <div class="punchline">
+   <h2> Quickly find a meeting place !</h2>
+ </div>
+ </div>
+​
 <% if user_signed_in? && current_user.events.any? %>
 <div class="container-create-event">
-  <div class="create-event">
-    <h1> My events </h1>
-  </div>
-<% @participations.each do |participation|  %>
-<div class='event-slate'>
+ <div class="create-event">
+  <h1> Your events </h1>
+ </div>
+  <% @participations.each do |participation| %>
+ <div class='event-slat'>
   <div class="svg-glass">
-    <%= inline_svg('glass.svg') %>
+   <%= inline_svg('glass.svg') %>
   </div>
   <div class="title-event">
-  <h5><%= participation.event.name %></h5>
-      <h6 class="date"> <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %></h6>
+   <h5>
+    <%= participation.event.name %>
+   </h5>
+   <h6 class="date">
+    <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %>
+   </h6>
+​
   </div>
-  <h5 class="status"><%= participation.event.status %></h5>
-</div>
+  <%= link_to "", event_path(participation.event), class: "slat-link" %>
+ </div>
 <% end %>
-
-  <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
-
+​
+ <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
+​
 <% else %>
-  <div class="container text-center">
-    <h2 class=''> Quickly find a meeting place  !</h2>
-    <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
-    <hr>
-    </div>
+ <div class="container text-center">
+    <p>Find easily a nice place to meet with your friends!</p>
+  <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
+  <hr>
   </div>
+ </div>
 <% end %>
-
