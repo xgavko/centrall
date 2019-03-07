@@ -5,10 +5,9 @@ class Event < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :places
 
-  validates :start_at, presence: true
-  validates_datetime :finish_time, :after => :start_time
   validates :name, presence: true
   validates :kind, presence: true
+  validates_datetime :start_at, after: :now, after_message: "must be in the future"
 
   enum status: { boarding: 0, voting: 1, display_result: 2 }
   enum kind: { bar: 0, restaurant: 1 }
