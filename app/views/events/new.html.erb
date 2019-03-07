@@ -12,9 +12,9 @@
 
   <%= simple_form_for @event do |f| %>
     <%= f.input :name, label: 'What is the occasion ?', error: 'The name is mandatory' %>
-    <%= f.input :start_at, :minute_step => 15, label: 'When are you meeting your friends ?', error: 'The date & time are mandatory', class: 'datetime custom-select-lg' %>
+    <%= f.input :start_at, start_year: Date.today.year, :minute_step => 15, label: 'When are you meeting your friends ?', class: 'datetime' %>
     <%= f.input :kind, collection: Event.kinds.keys, as: :radio_buttons, label: 'What kind of place do you prefer ?' %>
-
     <%= f.button :submit, class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>
+

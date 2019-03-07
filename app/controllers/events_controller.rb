@@ -53,6 +53,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
+
     if @event.save
       redirect_to @event
     else
