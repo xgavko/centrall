@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   has_many :places
 
   validates :start_at, presence: true
+  validates_datetime :finish_time, :after => :start_time
   validates :name, presence: true
   validates :kind, presence: true
 

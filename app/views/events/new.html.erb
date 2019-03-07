@@ -9,7 +9,7 @@
 
   <%= simple_form_for @event do |f| %>
     <%= f.input :name, label: 'What is the occasion ?', error: 'The name is mandatory' %>
-    <%= f.input :start_at, :minute_step => 15, label: 'What time is you meeting ?', error: 'The date & time are mandatory', class: 'datetime' %>
+    <%= f.input :start_at, start_year: Date.today.year, :minute_step => 15, label: 'What time is you meeting ?', error: 'The date & time are mandatory', class: 'datetime' %>
     <%= f.input :kind, collection: Event.kinds.keys, as: :radio_buttons, label: 'What kind of place do you prefer ?' %>
 
       <!-- <div class="switch-field">
@@ -23,3 +23,4 @@
     <%= f.button :submit, class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>
+
