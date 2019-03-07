@@ -1,6 +1,10 @@
 <%= content_for(:body_class, "fixed-height") %>
 
-<div class="home-banner">
+<div class='home-banner'>
+  <div class='titles'>
+    <h1>CentrAll</h1>
+    <h6>Quickly find a meeting place</h6>
+  </div>
 </div>
 
 <% if user_signed_in? && current_user.events.any? %>

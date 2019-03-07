@@ -10,6 +10,25 @@
   justify-content: center;
   height: 40vh;
   flex-shrink: 0;
+  .titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    h1 {
+      margin: 10px;
+      padding: 0;
+      color: white;
+      font-family: $logo-font;
+      font-style: bold;
+      font-size: 34px;
+    }
+    h6 {
+      padding: 0;
+      color: white;
+    }
+  }
 }
 
 .container-create-event {
