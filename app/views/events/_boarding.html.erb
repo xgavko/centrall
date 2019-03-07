@@ -1,7 +1,10 @@
 <h1>
   <%= @event.status.capitalize %> - <%= @event.name %>
 </h1>
-<h6 class="boarding-time" data-start_at="<%= @event.created_at.iso8601 %>"><%= @event.created_at.to_formatted_s(:long) %></h6>
+<h6 class="boarding-time" data-start_at="<%= @event.created_at.iso8601 %>"><%= @event.start_at.to_formatted_s(:long) %></h6>
+
+<a href="#" onclick="copyToClipboard('<%= event_url(@event) %>')">Copy URL</a>
+
 <h5 class='title-separator'>PARTICIPANTS</h5>
 
 <div class="container-participant">
