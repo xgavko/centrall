@@ -12,6 +12,14 @@ class Event < ApplicationRecord
   enum status: { boarding: 0, voting: 1, display_result: 2 }
   enum kind: { bar: 0, restaurant: 1 }
 
+  before_create :add_slug
+  SLUG_LENGTH = 8
+
+  def to_param
+    slug
+  end
+
+
   def chosen_place
     places.find_by(chosen: true)
   end
@@ -82,14 +90,14 @@ class Event < ApplicationRecord
     @client.spot(establishment.google_id)
   end
 
-  # def no_votes?
-  #   # Event.first.participations.first.place
-  #   votes = []
-  #   @event.participations.each do |participation|
-  #     votes << participation unless participation.place.nil?
-  #   end
-  #   votes.empty?
-  # end
+  private
+
+  def add_slug
+    loop do
+      self.slug = SlugGenerator.generate(Event::SLUG_LENGTH)
+      break unless Event.find_by_slug(self.slug)
+    end
+  end
 end
 
 

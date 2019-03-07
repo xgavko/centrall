@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   root to: 'participations#index'
 
-  resources :events, only: [:show, :new, :create, :edit, :update] do
+  resources :events, param: :slug, only: [:show, :new, :create, :edit, :update] do
     scope module: :events do
-      resources :statuses, only: :update
+      resources :statuses, param: :slug, only: :update
     end
   end
 

@@ -10,7 +10,7 @@ class EventsController < ApplicationController
           return
         end
         @event.voting!
-        redirect_to event_path(@event)
+        redirect_to event_path(@event.slug)
       end
       unless Participation.where(user: current_user, event: @event).exists?
         participation = Participation.create!(user: current_user, event: @event)
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
       second_cond = @event.updated_at + 15.minutes < Time.current
       if first_cond || second_cond
         @event.display_result!
-        redirect_to event_path(@event)
+        redirect_to event_path(@event.slug)
       end
       @event.set_places unless @event.places.any?
 
@@ -68,6 +68,6 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.find_by_slug(params[:slug])
   end
 end

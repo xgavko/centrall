@@ -31,7 +31,7 @@
               <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %>
             </h6>
           </div>
-          <%= link_to "", event_path(participation.event), class: "slat-link" %>
+          <%= link_to "", event_path(participation.event.slug), class: "slat-link" %>
         </div>
       <% end %>
     <% end %>
