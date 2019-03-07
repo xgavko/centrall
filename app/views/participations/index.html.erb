@@ -14,20 +14,22 @@
     </div>
 
     <% @participations.each do |participation| %>
-      <div class='event-slat'>
-        <div class="svg-glass">
-          <%= inline_svg('glass.svg', width: 16) %>
+      <% if participation.event.start_at + 4.hours > Time.now %>
+        <div class='event-slat'>
+          <div class="svg-glass">
+            <%= inline_svg('glass.svg', width: 16) %>
+          </div>
+          <div class="title-event">
+            <h5>
+              <%= participation.event.name %>
+            </h5>
+            <h6 class="date">
+              <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %>
+            </h6>
+          </div>
+          <%= link_to "", event_path(participation.event), class: "slat-link" %>
         </div>
-        <div class="title-event">
-          <h5>
-            <%= participation.event.name %>
-          </h5>
-          <h6 class="date">
-            <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %>
-          </h6>
-        </div>
-        <%= link_to "", event_path(participation.event), class: "slat-link" %>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <% else %>
