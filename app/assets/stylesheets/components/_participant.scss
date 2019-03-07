@@ -17,8 +17,25 @@
   }
 }
 
-.boarding-time {
+.header-boarding {
+  h1 {
+    padding-left: 0;
+  }
+}
+
+.date-copy {
+  display: flex;
   margin-bottom: 18px;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    flex-grow: 1;
+    color: $medium-gray;
+  }
+  .btn-url {
+    height: 35px;
+    font-size: 13px;
+  }
 }
 
 .title-separator {

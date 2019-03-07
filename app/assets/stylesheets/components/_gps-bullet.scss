@@ -1,0 +1,12 @@
+.gps-bullet-animate {
+  animation: infinite pulse 600ms ease alternate;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
