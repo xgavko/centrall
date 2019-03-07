@@ -18,9 +18,9 @@
         <div class='event-slat'>
           <div class="svg-icon">
             <% if participation.event.kind == 'bar' %>
-              <%= inline_svg('bar.svg', height: 18) %>
+              <%= inline_svg('bar.svg', height: 18, class: 'black-svg') %>
             <% else %>
-              <%= inline_svg('restaurant.svg', width: 24) %>
+              <%= inline_svg('restaurant.svg', width: 24, class: 'black-svg') %>
             <% end %>
           </div>
           <div class="title-event">
