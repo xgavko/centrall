@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   def show
     case @event.status
     when "boarding"
-      if @event.created_at + 15.minutes < Time.current
+      if @event.created_at + 1.minutes < Time.current
+        if @event.process_barycenter.nil?
+          # destroy event
+          return
+        end
         @event.voting!
         redirect_to event_path(@event)
       end
@@ -49,6 +53,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
+
     if @event.save
       redirect_to @event
     else

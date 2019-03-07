@@ -19,6 +19,7 @@ gem 'omniauth-facebook'
 gem 'inline_svg'
 gem 'geocoder'
 gem 'google_places'
+gem 'validates_timeliness', '~> 5.0.0.alpha3'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
