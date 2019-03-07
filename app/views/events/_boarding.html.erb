@@ -29,7 +29,7 @@
     </div>
     <% if current_user == @event.user %>
     <div class="col-8">
-      <%= link_to event_status_path(@event), method: :put do %>
+      <%= link_to event_status_path(@event.slug), method: :put do %>
         <button href="#" class='btn btn-primary btn-block'>Skip Timer</button>
       <% end %>
     </div>
