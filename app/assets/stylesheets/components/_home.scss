@@ -2,14 +2,55 @@
   height: 100vh;
 }
 
-.wrapper {
-  background: #269F00;
+.home-banner {
+  background: no-repeat image_url('background-homepage.svg');
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40vh;
-  background: linear-gradient(26.68deg, #289F00 20.45%, #96DC22 100%);
   flex-shrink: 0;
+  .titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    h1 {
+      margin: 10px;
+      padding: 0;
+      color: white;
+      font-family: $logo-font;
+      font-style: bold;
+      font-size: 34px;
+    }
+    h6 {
+      padding: 0;
+      color: white;
+    }
+  }
+}
+
+.welcome-message {
+  h4 {
+    margin: 0;
+  }
+  hr {
+    margin: 5px;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 13px;
+    text-align: left;
+  }
+  ul {
+    text-align: left;
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
 }
 
 .container-create-event {
@@ -51,11 +92,6 @@
   width: 15em;
   height: 7em;
   z-index: 1;
-}
-
-.tagline {
-  justify-content: center;
-  position: relative;
 }
 
 .glass {

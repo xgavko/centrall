@@ -1,9 +1,9 @@
 <%= content_for(:body_class, "fixed-height") %>
 
-
-<div class="wrapper">
-  <div class="punchline">
-    <%= inline_svg('background-homecover.svg') %>
+<div class='home-banner'>
+  <div class='titles'>
+    <h1> CentrAll </h1>
+    <h6> Quickly find a meeting place </h6>
   </div>
 </div>
 
@@ -31,12 +31,20 @@
     <% end %>
   </div>
   <% else %>
-  <div class="container text-center">
-    <p>Find easily a nice place to meet with your friends!</p>
+  <div class="container text-center welcome-message">
+    <h4> Welcome! </h4>
     <hr>
+    <span>We will calculate a central place to help you plan meet your friends in less than 30mn!</span>
+    <p>To do that, you only need to:</p>
+    <ul>
+      <li>Create a new Event</li>
+      <li>Share the link with you friends</li>
+      <li>Let them enter their departure location</li>
+      <li>Vote for one out of three propositions</li>
+    </ul>
+    <h4> Let's get started! </h4>
   </div>
 <% end %>
-
 
 <div class="panel-bottom">
   <%= link_to "Create event", new_event_path, class: "btn btn-primary btn-block" %>
