@@ -8,26 +8,32 @@
 </div>
 
 <% if user_signed_in? && current_user.events.any? %>
-  <div class="container-create-event">
-    <div class="create-event">
-      <h1> Your events </h1>
+    <div class="main-title-event">
+      <h1> Your Pending Events </h1>
     </div>
+  <div class="container-create-event">
 
-    <% @participations.each do |participation| %>
-      <div class='event-slat'>
-        <div class="svg-glass">
-          <%= inline_svg('glass.svg', width: 16) %>
+    <% @participations.sort_by { |participation| participation.event.start_at }.each do |participation| %>
+      <% if participation.event.start_at + 4.hours > Time.now %>
+        <div class='event-slat'>
+          <div class="svg-icon">
+            <% if participation.event.kind == 'bar' %>
+              <%= inline_svg('bar.svg', height: 18) %>
+            <% else %>
+              <%= inline_svg('restaurant.svg', width: 24) %>
+            <% end %>
+          </div>
+          <div class="title-event">
+            <h5>
+              <%= participation.event.name %>
+            </h5>
+            <h6 class="date">
+              <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %>
+            </h6>
+          </div>
+          <%= link_to "", event_path(participation.event), class: "slat-link" %>
         </div>
-        <div class="title-event">
-          <h5>
-            <%= participation.event.name %>
-          </h5>
-          <h6 class="date">
-            <%= participation.event.start_at.strftime("%A %-d %B %Y, at %H:%M") %>
-          </h6>
-        </div>
-        <%= link_to "", event_path(participation.event), class: "slat-link" %>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <% else %>

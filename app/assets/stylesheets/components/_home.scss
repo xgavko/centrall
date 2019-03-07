@@ -53,6 +53,10 @@
   }
 }
 
+.main-title-event {
+  padding-left: 20px;
+}
+
 .container-create-event {
   padding: 0 15px;
   overflow-y:auto;
@@ -60,11 +64,25 @@
   padding-bottom: 68px;
 }
 
+.svg-icon {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .event-slat {
   display: flex;
   align-items: center;
   position: relative;
   padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  h6 {
+    margin: 0px;
+    padding-top: 2px;
+    font-size: 10px;
+  }
 }
 
 .slat-link {
