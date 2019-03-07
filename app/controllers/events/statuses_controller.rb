@@ -1,6 +1,6 @@
 class Events::StatusesController < ApplicationController
   def update
-    event = Event.find(params[:event_id])
+    event = Event.find_by_slug(params[:slug])
     if event.boarding?
       event.status = :voting
     elsif event.voting?

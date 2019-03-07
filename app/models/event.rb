@@ -15,6 +15,10 @@ class Event < ApplicationRecord
   before_create :add_slug
   SLUG_LENGTH = 8
 
+  def to_param
+    slug
+  end
+
 
   def chosen_place
     places.find_by(chosen: true)

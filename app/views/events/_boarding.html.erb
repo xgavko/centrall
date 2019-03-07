@@ -3,7 +3,7 @@
 </h1>
 <h6 class="boarding-time" data-start_at="<%= @event.created_at.iso8601 %>"><%= @event.start_at.to_formatted_s(:long) %></h6>
 
-<a href="#" onclick="copyToClipboard('<%= event_url(@event) %>')">Copy URL</a>
+<a href="#" onclick="copyToClipboard('<%= event_url(@event.slug) %>')">Copy URL</a>
 
 <h5 class='title-separator'>PARTICIPANTS</h5>
 
@@ -25,7 +25,7 @@
     </div>
     <% if current_user == @event.user %>
     <div class="col-8">
-      <%= link_to event_status_path(@event), method: :put do %>
+      <%= link_to event_status_path(@event.slug), method: :put do %>
         <button href="#" class='btn btn-primary btn-block'>Skip Timer</button>
       <% end %>
     </div>
